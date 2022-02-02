@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const SavedComponent = require("./savedComponent")
 require('dotenv').config();
 
 
@@ -34,18 +35,6 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
-  savedComponents:[
-    {
-      savedComponent:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-      },
-      name:{
-        type: String,
-        required: true,
-      }
-    }
-  ],
   tokens:[
     {
       token: {
@@ -55,6 +44,12 @@ const userSchema = new mongoose.Schema({
     }
   ]
 });
+
+userSchema.virtual('savedComponents', {
+  ref: "SavedComponent",
+  localField: "_id",
+  foreignField: "owner",
+})
 
 // Hiding the password and the tokens from the users
 userSchema.methods.toJSON = function(){
@@ -70,7 +65,7 @@ userSchema.methods.toJSON = function(){
 //generate auth token for the user
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, `${process.env.SECRET_PASS}`);
+  const token = jwt.sign({ _id: user._id.toString()}, `${process.env.SECRET_PASS}`);
   
   user.tokens = user.tokens.concat({token});
   await user.save();
@@ -104,6 +99,13 @@ userSchema.pre("save", async function (next) {
   }
   next();
 });
+
+//Delete user components when user is removed
+userSchema.pre('remove', async function(){
+  const user = this;
+  await SavedComponent.deleteMany({owner: user._id});
+  next();
+})
 
 const User = mongoose.model("User", userSchema);
 
