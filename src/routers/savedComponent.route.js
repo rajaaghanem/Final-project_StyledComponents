@@ -19,6 +19,32 @@ router.post("/api/savedcomponents", auth, async (req, res) => {
   }
 });
 
+//Get all global components by category
+router.get(
+  "/api/savedcomponents/globalbycategory/:category",
+  async (req, res) => {
+    const category = req.params.category;
+
+    // console.log(category);
+    console.log(req.params);
+
+    try {
+      const savedComponent = await SavedComponent.find({
+        global: true,
+        category: category,
+      });
+
+      if (!savedComponent) {
+        return res.status(404).send("Saved Component not found");
+      }
+
+      res.send(savedComponent);
+    } catch (e) {
+      res.status(500).send(e.message);
+    }
+  }
+);
+
 //Get all saved components of the logged in user
 router.get("/api/savedcomponents", auth, async (req, res) => {
   try {
@@ -32,39 +58,19 @@ router.get("/api/savedcomponents", auth, async (req, res) => {
   }
 });
 
-//Get all global components by category
-router.get("/api/savedcomponents/globalbycategory", async (req, res) => {
-  const { category } = req.body;
-
-  console.log(category);
-  try {
-    const savedComponent = await SavedComponent.find({
-      global: true,
-      category: category,
-    });
-
-    if (!savedComponent) {
-      return res.status(404).send("Saved Component not found");
-    }
-
-    res.send(savedComponent);
-  } catch (e) {
-    res.status(500).send(e.message);
-  }
-});
-
 //Get savedComponent by id
-router.get("/api/savedcomponents/:id", auth, async (req, res) => {
-  const _id = req.params.id;
+router.get("/api/savedcomponents/find/:id", auth, async (req, res) => {
+  // const _id = req.params.id;
+  console.log(req.params.id);
 
   try {
     const savedComponent = await SavedComponent.findOne({
-      _id,
+      _id: req.params.id,
       owner: req.user._id,
     });
 
     if (!savedComponent) {
-      return res.status(404).send("Saved Component not found");
+      return res.status(404).send({ message: "Saved Component not found" });
     }
 
     res.send(savedComponent);
@@ -90,7 +96,7 @@ router.patch("/api/savedcomponents/:id", auth, async (req, res) => {
   );
 
   if (!isValidOperation) {
-    return res.status(400).send({ error: "invalid updates" });
+    return res.status(400).send({ message: "invalid updates" });
   }
 
   try {
@@ -124,7 +130,7 @@ router.delete("/api/savedComponents/:id", auth, async (req, res) => {
     });
 
     if (!savedComponent) {
-      res.status(404).send("saved Component not found");
+      res.status(404).send({ message: "Saved Component not found" });
     }
 
     res.send(savedComponent);
@@ -133,14 +139,18 @@ router.delete("/api/savedComponents/:id", auth, async (req, res) => {
   }
 });
 
-//Delete user profile 
-router.delete("/api/savedcomponents/me", auth, async (req, res) => {
-  try {
-    await req.user.remove();
-    res.send(req.user);
-  } catch (e) {
-    res.status(500).send();
-  }
-});
+// //Delete user profile
+// router.delete("/api/savedcomponents/:id", auth, async (req, res) => {
+//   try {
+
+//     const component = await SaveddeleteOne();
+//     res.send(component);
+
+//   } catch (e) {
+
+//     res.status(500).send({message: "Component not found"});
+//   }
+
+// });
 
 module.exports = router;

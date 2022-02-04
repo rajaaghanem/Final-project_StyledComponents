@@ -11,7 +11,7 @@ router.post("/api/users/signup", async (req, res) => {
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({message: error.message});
   }
 });
 
@@ -24,8 +24,8 @@ router.post("/api/users/login", async (req, res) => {
     );
     const token = await user.generateAuthToken();
     res.send({ user, token });
-  } catch (e) {
-    res.status(400).send("Unable to login");
+  } catch (error) {
+    res.status(400).send({message: error.message});
   }
 });
 
@@ -38,7 +38,7 @@ router.post("/api/users/logout", auth, async (req, res) => {
     await req.user.save();
     res.send();
   } catch (e) {
-    res.status(500).send("Unable to logout");
+    res.status(500).send({message: "Unable to logout"});
   }
 });
 
@@ -68,7 +68,7 @@ router.patch("/api/users/me", auth, async (req, res) => {
   );
 
   if (!isValidOperation) {
-    return res.status(400).send({ error: "Invalid updates!" });
+    return res.status(400).send({ message: "Invalid updates!" });
   }
 
   const _id = req.params.id;
@@ -85,11 +85,13 @@ router.patch("/api/users/me", auth, async (req, res) => {
 router.delete("/api/users/me", auth, async (req, res) => {
   try {
 
-    await req.user.remove();
-    res.send(req.user);
+    const user = await req.user.deleteOne();
+    // res.send(req.user);
+    res.send(user);
+
 
   } catch (e) {
-    res.status(500).send();
+    res.status(500).send("Unable to delete user");
   }
 });
 
