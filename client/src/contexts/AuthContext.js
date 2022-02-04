@@ -79,6 +79,7 @@ export function AuthProvider({ children }) {
 
   }
 
+  //logout from all user's devices
   async function logoutFromAll(){
     setError("");
 
