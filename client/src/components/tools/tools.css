@@ -1,3 +1,65 @@
 .style-componant-page {
   display: flex;
 }
+
+.component-size_container,
+.component-border_container,
+.component-background_container {
+  border: 0.1rem solid rgba(187, 183, 183, 0.781);
+  width: 22rem;
+  height: max-content;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0.1rem 0.1rem 1rem gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.style-componant-page h3 {
+  text-align: center;
+  background-color: rgba(19, 6, 48, 0.897);
+  color: white;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 1.2rem gray;
+}
+
+.style-componant-page label,
+.style-componant-page option,
+.component-border-color {
+  padding: 0.2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(19, 6, 48, 0.897);
+}
+
+.component-size_container div,
+.component-box-shadow_container div,
+.component-box-shadow_container div,
+.component-border-radius,
+.component-style,
+.component-width {
+  margin: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.style-componant-page input,
+.component-border_container select {
+  font-size: 1.3rem;
+  text-align: center;
+  width: max-content;
+  padding: 0.2rem;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0.2rem 0.2rem 0.3rem gray;
+}
+
+.component-background_container {
+  width: fit-content;
+}

@@ -17,10 +17,6 @@ function ColorPicker({value, setSelectedColor}) {
   useEffect(() => {
     setSelectedColor(backgroundHex);  
   }, [backgroundHex, setSelectedColor]);
-  
-
-  // console.log("background in colorpicker", backgroundRgb);
-  // console.log("background in colorpicker", backgroundHex);
 
 
   return <div>
