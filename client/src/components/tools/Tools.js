@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import "./tools.css";
 import ColorPicker from "./colorPicker/ColorPicker";
-import Button from "../button/Button";
-import EditorPage from "../editorpage/EditorPage";
 import BorderColor from "./borderColor/BorderColor";
+import ShadowColor from "./shadowColor/ShadowColor";
 
-function Tools() {
-  const [selectedColor, setSelectedColor] = useState("#FFF");
-  const [componentSize, setComponentSize] = useState({
-    componentWidth: "120px",
-    componentHeight: "120px",
-    componentPadding: "20px",
-    componentMargin: "20px",
-  });
-  const [selectedBorderColor, setSelectedBorderColor] = useState("#005affff");
-  const [selectedBoreder, setSelectedBoreder] = useState({
-    borderWidth: "4px",
-    borederStyle: "solid",
-    borderRadius: "4px"
-  });
-  const [boxShadow, setBoxShadow] = useState({
-    hOffSet: "4px",
-    vOffSet: "4px",
-    blur: "8px",
-  });
+function Tools({
+  selectedColor,
+  setSelectedColor,
+  componentSize,
+  setComponentSize,
+  selectedBorderColor,
+  setSelectedBorderColor,
+  selectedBoreder,
+  setSelectedBoreder,
+  boxShadow,
+  setBoxShadow,
+  selectedShadowColor,
+  setSelectedShadowColor
+}) {
+
 
   //handle box-shadow h-offset, v-offset and blur fields
   const handleBoxShadow = (e) => {
@@ -61,54 +56,63 @@ function Tools() {
     <>
       <div className="style-componant-page">
         <div>
+          <div className="component-background_container">
+            <h3>BACKGROUND</h3>
           <ColorPicker
             value={selectedColor}
             setSelectedColor={setSelectedColor}
           />
-          <div>
-            <label>Width</label>
-            <input
-              value={componentSize.componentWidth}
-              name="componentWidth"
-              onChange={handleComponentSize}
-            />
           </div>
-          <div>
-            <label>Height</label>
-            <input
-              value={componentSize.componentHeight}
-              name="componentHeight"
-              onChange={handleComponentSize}
-            />
-          </div>
-          <div>
-            <label>Padding</label>
-            <input
-              value={componentSize.componentPadding}
-              name="componentPadding"
-              onChange={handleComponentSize}
-            />
-          </div>
-          <div>
-            <label>Margin</label>
-            <input
-              value={componentSize.componentMargin}
-              name="componentMargin"
-              onChange={handleComponentSize}
-            />
-          </div>
-          <div>
-            <label>Border Color</label>
-            <BorderColor setSelectedBorderColor={setSelectedBorderColor} />
+          <div className="component-size_container">
+            <h3>SIZE</h3>
             <div>
-            <label>Border Width</label>
-            <input
-              value={selectedBoreder.borderWidth}
-              name="borderWidth"
-              onChange={handleBorderChange}
-            />
+              <label>Width</label>
+              <input
+                value={componentSize.componentWidth}
+                name="componentWidth"
+                onChange={handleComponentSize}
+              />
             </div>
             <div>
+              <label>Height</label>
+              <input
+                value={componentSize.componentHeight}
+                name="componentHeight"
+                onChange={handleComponentSize}
+              />
+            </div>
+            <div>
+              <label>Padding</label>
+              <input
+                value={componentSize.componentPadding}
+                name="componentPadding"
+                onChange={handleComponentSize}
+              />
+            </div>
+            <div>
+              <label>Margin</label>
+              <input
+                value={componentSize.componentMargin}
+                name="componentMargin"
+                onChange={handleComponentSize}
+              />
+            </div>
+          </div>
+          <div className="component-border_container">
+            <h3>BORDER</h3>
+            <div className="component-border-color">
+              <label>Border Color</label>
+              <BorderColor setSelectedBorderColor={setSelectedBorderColor} />
+            </div>
+            <div className="component-width">
+              <label>Border Width</label>
+              <input
+                value={selectedBoreder.borderWidth}
+                name="borderWidth"
+                onChange={handleBorderChange}
+              />
+            </div>
+            <div className="component-style">
               <label>Border Style</label>
               <select
                 value={selectedBoreder.borederStyle}
@@ -125,18 +129,22 @@ function Tools() {
                 <option value="outset">outset</option>
               </select>
             </div>
-            <div>
-            <label>Border Radius</label>
-            <input
-              value={selectedBoreder.borderRadius}
-              name="borderRadius"
-              onChange={handleBorderChange}
-            />
+            <div className="component-border-radius">
+              <label>Border Radius</label>
+              <input
+                value={selectedBoreder.borderRadius}
+                name="borderRadius"
+                onChange={handleBorderChange}
+              />
             </div>
           </div>
-          <div>
-            <label>Box Shadow</label>
-            <div>
+          <div className="component-border_container">
+            <h3>BOX SHADOW</h3>
+            <div className="component-border-color">
+              <label>Shadow Color</label>
+              <ShadowColor  setSelectedShadowColor={setSelectedShadowColor}/>
+            </div>
+            <div className="component-style">
               <label>h-offset</label>
               <input
                 value={boxShadow.hOffSet}
@@ -144,7 +152,7 @@ function Tools() {
                 onChange={handleBoxShadow}
               />
             </div>
-            <div>
+            <div className="component-style">
               <label>v-offset</label>
               <input
                 value={boxShadow.vOffSet}
@@ -152,7 +160,7 @@ function Tools() {
                 onChange={handleBoxShadow}
               />
             </div>
-            <div>
+            <div className="component-style">
               <label>Blur</label>
               <input
                 value={boxShadow.blur}
@@ -162,21 +170,6 @@ function Tools() {
             </div>
           </div>
         </div>
-        <div>
-          <Button
-            color={selectedColor}
-            componentSize={componentSize}
-            borderColor={selectedBorderColor}
-            border={selectedBoreder}
-            boxShadow={boxShadow}
-          />
-        </div>
-      </div>
-      <div>
-        <EditorPage
-          color={selectedColor}
-          componentSize={componentSize}
-        />
       </div>
     </>
   );

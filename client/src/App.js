@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import Logout from "./components/logout/Logout";
 import Testaxios from "./components/testaxios/Testaxios";
 import Tools from "./components/tools/Tools";
+import ToolsPage from "./components/tools-page/ToolsPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login-page" exact component={Login} />
               <Route path="/logout-page" exact component={Logout} />
               <Route path="/tools-page" exact component={Tools} />
+              <Route path="/tools-container" exact component={ToolsPage} />
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>
