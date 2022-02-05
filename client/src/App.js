@@ -25,7 +25,7 @@ function App() {
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>
-          <div><Link to="/tools-page">tools</Link></div>
+          {/* <div><Link to="/tools-page">tools</Link></div> */}
         </BrowserRouter>
       </AuthProvider>
     </>
