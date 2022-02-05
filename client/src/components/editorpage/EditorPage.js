@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./editorpage.css";
+import myApi from "../../api/API";
 import Editor from "../editor/Editor";
 
 
-function EditorPage() {
+
+function EditorPage({color, componentSize}) {
     const data = ["red", "2", "2", "1", "2", "solid", "pink", "10"];
 
     const [styledComponent, setStyledComponent] = useState("");
     const [css, setCss] = useState("");
     const [js, setJs] = useState("");
+    const [error, setError] = useState("");
   
     useEffect(() => {
+      // const textStyled =
+      //   `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
+      //   `\n\t\tcolor: ${data[0]};\n\t\tfont-size: ${data[1]}rem;\n\t\tmargin: ${data[2]}rem;\n\t\tpadding: ${data[3]}rem;\n\t\tborder: ${data[4]}px ${data[5]} ${data[6]};\n\t\tborder-radius: ${data[7]}px;\n` +
+      //   "\t;\n\n\treturn <Button> Normal Button </Button>;\n}\n\nexport default Button;";
       const textStyled =
         `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
-        `\n\t\tcolor: ${data[0]};\n\t\tfont-size: ${data[1]}rem;\n\t\tmargin: ${data[2]}rem;\n\t\tpadding: ${data[3]}rem;\n\t\tborder: ${data[4]}px ${data[5]} ${data[6]};\n\t\tborder-radius: ${data[7]}px;\n` +
+        `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n` +
         "\t;\n\n\treturn <Button> Normal Button </Button>;\n}\n\nexport default Button;";
       const textReact =
         'import React from "react";\n\nfunction Button() {\n\n\treturn <button className="btn">Normal Button</button>;\n}\n\nexport default Button;';
@@ -22,10 +29,31 @@ function EditorPage() {
       setStyledComponent(textStyled);
       setJs(textReact);
       setCss(textCss);
-    }, []);
+    }, [styledComponent, css, js, color,componentSize]);
+
+    //saved the component to the user database
+    const handleSaveComponent = async () =>{
+      const obj = {
+        name: "blue button",
+        styledComponent: styledComponent,
+        jsComponent: "js component",
+        cssComponent: "css component",
+        global: true,
+        category: "Buttons",
+      };
+      try {
+        const response = await myApi.post("/savedcomponents", obj);
+        console.log("component: ", response.data.styledComponent);
+      } catch (e) {
+        setError(e.response.data.message);
+      }
+    }
+
+
   
     return (
       <>
+      {error && <div>{error}</div>}
         <div className="pane top-pane">
           <Editor
             language="javascript"
@@ -55,6 +83,7 @@ function EditorPage() {
             height="100%"
           ></iframe> */}
         </div>
+        <button onClick={handleSaveComponent}>Save</button>
       </>
     );
   }

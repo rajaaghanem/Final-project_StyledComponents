@@ -7,6 +7,7 @@ function ColorPicker({value, setSelectedColor}) {
   const [backgroundRgb, setBackgroundRgb] = useState({r: 255, g: 255, b: 255, a: 1});
   const [backgroundHex, setBackgroundHex] = useState("#FFF");
   
+  //handle color picked by the user, convert it to hex and save it in state
   const handleChangeComplete = (color) => {
     setBackgroundRgb(color.rgb);
     setBackgroundHex("#" + rgbHex(color.rgb.r, color.rgb.g, color.rgb.b, color.rgb.a));
