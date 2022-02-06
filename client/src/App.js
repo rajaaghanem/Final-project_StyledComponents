@@ -11,8 +11,9 @@ import Tools from "./components/tools/Tools";
 import ToolsPage from "./components/tools-page/ToolsPage";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Navbar from "./components/navbar/Navbar";
-import HomePage from "./pages/userProfile/homepage/HomePage";
+import HomePage from "./pages/homepage/HomePage";
 import CategoriesPage from "./pages/categoriesPage/CategoriesPage";
+import GreenButtonPage from "./pages/buttonsPages/greenButtonpage/GreenButtonPage";
 
 function App() {
  
@@ -34,6 +35,8 @@ function App() {
               <Route path="/tools-container" exact component={ToolsPage} />
               <Route path="/user-profile" exact component={UserProfile}/>
               <Route path="/categories-page" exact component={CategoriesPage}/>
+              <Route path="/greenButton-page" exact component={GreenButtonPage}/>
+
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>

@@ -4,8 +4,8 @@ import rgbHex from 'rgb-hex';
 
 
 function ColorPicker({value, setSelectedColor}) {
-  const [backgroundRgb, setBackgroundRgb] = useState({r: 255, g: 255, b: 255, a: 1});
-  const [backgroundHex, setBackgroundHex] = useState("#FFF");
+  const [backgroundRgb, setBackgroundRgb] = useState({r: 25, g: 7, b: 58, a: 100});
+  const [backgroundHex, setBackgroundHex] = useState("#19073a");
   
   //handle color picked by the user, convert it to hex and save it in state
   const handleChangeComplete = (color) => {
@@ -18,6 +18,7 @@ function ColorPicker({value, setSelectedColor}) {
     setSelectedColor(backgroundHex);  
   }, [backgroundHex, setSelectedColor]);
 
+  console.log(backgroundRgb);
 
   return <div>
       <SketchPicker color={backgroundRgb} onChangeComplete={handleChangeComplete}/>

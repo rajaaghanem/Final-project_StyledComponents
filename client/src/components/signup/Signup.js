@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import axios from "axios";
 // import myApi from "../../api/API";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 import "./signup.css";
 
 function Signup({ handleClick }) {
@@ -9,6 +10,7 @@ function Signup({ handleClick }) {
   const [userName, setUserName] = useState("");
   const [password, setPssword] = useState("");
   const { signup, error } = useAuth();
+  const history = useHistory();
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -29,6 +31,7 @@ function Signup({ handleClick }) {
   const handleSignup = async (e) => {
     e.preventDefault();
     await signup(password, email, userName);
+    history.push("/categories-page");
   };
 
   return (

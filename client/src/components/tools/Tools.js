@@ -3,11 +3,15 @@ import "./tools.css";
 import ColorPicker from "./colorPicker/ColorPicker";
 import BorderColor from "./borderColor/BorderColor";
 import ShadowColor from "./shadowColor/ShadowColor";
+import CompactPicker from "./compactColorBorder/CompactColorBorder";
+import CompactColorShadow from "./compactColorShadow/CompactColorShadow";
 
 function Tools({
   selectedColor,
   setSelectedColor,
   componentSize,
+  componentWidth,
+  componentHeight,
   setComponentSize,
   selectedBorderColor,
   setSelectedBorderColor,
@@ -68,7 +72,8 @@ function Tools({
             <div>
               <label>Width</label>
               <input
-                value={componentSize.componentWidth}
+                // value={componentSize.componentWidth}
+                value={componentWidth}
                 name="componentWidth"
                 onChange={handleComponentSize}
               />
@@ -76,7 +81,9 @@ function Tools({
             <div>
               <label>Height</label>
               <input
-                value={componentSize.componentHeight}
+                // value={componentSize.componentHeight}
+                value={componentHeight}
+
                 name="componentHeight"
                 onChange={handleComponentSize}
               />
@@ -102,7 +109,8 @@ function Tools({
             <h3>BORDER</h3>
             <div className="component-border-color">
               <label>Border Color</label>
-              <BorderColor setSelectedBorderColor={setSelectedBorderColor} />
+              <BorderColor setSelectedBorderColor={setSelectedBorderColor}/>
+              <div className="compactPicker"><CompactPicker setSelectedBorderColor={setSelectedBorderColor}/></div>
             </div>
             <div className="component-width">
               <label>Border Width</label>
@@ -142,7 +150,8 @@ function Tools({
             <h3>BOX SHADOW</h3>
             <div className="component-border-color">
               <label>Shadow Color</label>
-              <ShadowColor  setSelectedShadowColor={setSelectedShadowColor}/>
+              <ShadowColor setSelectedShadowColor={setSelectedShadowColor}/>
+              <div className="compactPicker"><CompactColorShadow setSelectedShadowColor={setSelectedShadowColor}/></div>
             </div>
             <div className="component-style">
               <label>h-offset</label>

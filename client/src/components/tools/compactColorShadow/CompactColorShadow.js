@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { HuePicker } from "react-color";
-import rgbHex from "rgb-hex";
+import React, {useState, useEffect} from 'react';
+import {CompactPicker} from 'react-color';
+import rgbHex from 'rgb-hex';
 
-function ShadowColor({setSelectedShadowColor}) {
-
+function CompactColorShadow({setSelectedShadowColor}) {
   const [borderColorHex, setborderColorHex] = useState("#808080");
   const [borderColorRgb, setborderColorRgb] = useState({r: 128, g: 128, b: 128, a: 100});
 
@@ -20,12 +19,10 @@ function ShadowColor({setSelectedShadowColor}) {
     setSelectedShadowColor(borderColorHex);
   }, [borderColorHex, setSelectedShadowColor]);
 
-
-  return (
-    <div>
-      <HuePicker width="209px" color={borderColorRgb} onChangeComplete={handleChangeComplete}/>
-    </div>
-  );
+  return <div>
+      <CompactPicker className="compact-picker" color={borderColorRgb} onChangeComplete={handleChangeComplete}/>
+  </div>;
+  
 }
 
-export default ShadowColor;
+export default CompactColorShadow;

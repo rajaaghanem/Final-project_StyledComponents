@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-import { AuthProvider, useAuth } from "../../../contexts/AuthContext";
-import Login from "../../../components/login/Login";
-import Signup from "../../../components/signup/Signup";
+import { AuthProvider, useAuth } from "../../contexts/AuthContext";
+import Login from "../../components/login/Login";
+import Signup from "../../components/signup/Signup";
 import "./homepage.css";
 
 function HomePage() {

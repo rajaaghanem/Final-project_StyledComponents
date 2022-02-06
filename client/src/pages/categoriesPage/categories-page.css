@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: light;
+  min-height: 91vh;
+  background-color: lightgray;
 }
 
 .categories_container {
@@ -30,7 +30,7 @@
 
 .categories_container > a:hover {
   background-color: #19073aa8;
-  color: #ee0d89;
+  color: #ee0d898e;
 }
 
 .categories-cards {

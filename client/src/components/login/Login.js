@@ -28,7 +28,7 @@ function Login({handleClick}) {
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(email, password);
-    history.push("/tools-container");
+    history.push("/categories-page");
   };
 
   return (

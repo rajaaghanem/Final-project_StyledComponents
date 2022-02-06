@@ -100,22 +100,22 @@ export function AuthProvider({ children }) {
 
 
   //get the current user depends on token
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   setError("");
+    setError("");
 
-  //   const handleGetUser = async () => {
-  //     try {
-  //       const response = await myApi.get("/users/me");
-  //       setCurrentUser(response.data);
-  //     } catch (e) {
-  //       setError(e.response.data.message);
-  //     }
-  //   };
+    const handleGetUser = async () => {
+      try {
+        const response = await myApi.get("/users/me");
+        setCurrentUser(response.data);
+      } catch (e) {
+        setError(e.response.data.message);
+      }
+    };
   
-  //   handleGetUser();
+    handleGetUser();
  
-  // }, []);
+  }, [currentToken, setCurrentToken]);
 
   console.log("currentUser in auth", currentUser);
 
