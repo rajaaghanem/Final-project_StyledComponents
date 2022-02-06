@@ -1,9 +1,74 @@
-.signup-container div {
-  font-size: 2rem;
-  color: red;
+.login_container {
+  width: 85vw;
+  max-width: 40rem;
+  height: fit-content;
+  border: 0.2rem solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  color: #19073a;
+  box-shadow: 0.3rem 0.3rem 0.3rem rgb(80, 78, 78);
+  border: 0.03rem solid #19073a;
 }
 
-.signup-container button {
-  width: 6rem;
-  height: 4rem;
+.login_container h2 {
+  background-color: rgba(218, 210, 210, 0.589);
+  padding: 1.2rem;
+  border-radius: 3rem;
+}
+
+.login_container h3 {
+  background-color: #f5b937cc;
+  padding: 1.2rem;
+  color: #19073a;
+  font-weight: bold;
+  border-radius: 3rem;
+}
+
+.login_container div {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.login_container label {
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.login_container input {
+  border: 0.1rem solid rgb(202, 194, 194);
+  padding: 0.7rem;
+  border-radius: 1rem;
+  box-shadow: 0.3rem 0.3rem 0.3rem rgb(80, 78, 78);
+}
+
+.login_container button {
+  padding: 0.7rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #19073a;
+  color: #f5b937;
+  font-weight: bold;
+  box-shadow: 0.3rem 0.3rem 0.3rem rgb(80, 78, 78);
+  cursor: pointer;
+}
+
+.login_container button:hover {
+  color: #ee0d89;
+}
+
+.login-form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-p {
+  font-size: 1.1rem;
+  font-weight: bold;
 }

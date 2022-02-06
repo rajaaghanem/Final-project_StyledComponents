@@ -29,7 +29,7 @@ function EditorPage({color, componentSize}) {
       setStyledComponent(textStyled);
       setJs(textReact);
       setCss(textCss);
-    }, [styledComponent, css, js, color,componentSize]);
+    }, [styledComponent, css, js, color]);
 
     //saved the component to the user database
     const handleSaveComponent = async () =>{

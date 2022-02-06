@@ -1,5 +1,9 @@
 .style-componant-page {
   display: flex;
+  overflow-y: scroll;
+  height: 90vh;
+  width: 26rem;
+  padding: 0 1.5rem;
 }
 
 .component-size_container,
@@ -62,4 +66,8 @@
 
 .component-background_container {
   width: fit-content;
+}
+
+.compactPicker {
+  margin: 0.5rem;
 }

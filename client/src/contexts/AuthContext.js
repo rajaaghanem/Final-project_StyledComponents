@@ -69,6 +69,8 @@ export function AuthProvider({ children }) {
       const response = await myApi.post("/users/logout");
 
       console.log(response);
+      setCurrentUser(null);
+      setCurrentToken(null)
       localStorage.clear();
 
     } catch (e) {
@@ -96,15 +98,26 @@ export function AuthProvider({ children }) {
     }
   }
 
-  console.log(error);
 
+  //get the current user depends on token
+  useEffect(() => {
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     setCurrentUser(user);
-  //   });
-  //   return unsubscribe;
-  // }, []);
+    setError("");
+
+    const handleGetUser = async () => {
+      try {
+        const response = await myApi.get("/users/me");
+        setCurrentUser(response.data);
+      } catch (e) {
+        setError(e.response.data.message);
+      }
+    };
+  
+    handleGetUser();
+ 
+  }, [currentToken, setCurrentToken]);
+
+  console.log("currentUser in auth", currentUser);
 
   const value = {
     currentUser,
