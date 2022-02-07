@@ -2,91 +2,115 @@ import React, { useState, useEffect } from "react";
 import "./editorpage.css";
 import myApi from "../../api/API";
 import Editor from "../editor/Editor";
+import { Link } from "react-router-dom"
 
+function EditorPage({
+  color,
+  componentSize,
+  borderColor,
+  border,
+  boxShadow,
+  shadowColor,
+  showSave
+}) {
+  const [styledComponent, setStyledComponent] = useState("");
+  const [css, setCss] = useState("");
+  const [js, setJs] = useState("");
+  const [error, setError] = useState("");
+  const [componentName, setComponentName] = useState("");
+  const [showSavedMassege, setShowSavedMassege] = useState(false);
 
+  useEffect(() => {
+    const textStyled =
+      `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
+      `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n\t\tmargin: ${componentSize.componentMargin};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};` +
+      "\t\n\n\treturn <Button> </Button>;\n}\n\nexport default Button;";
+    const textReact =
+      'import React from "react";\n\nfunction Button() {\n\n\treturn <button className="btn"> </button>;\n}\n\nexport default Button;';
+    const textCss = `.btn {\n\tbackground-color: ${color};\n\twidth: ${componentSize.componentWidth};\n\theight: ${componentSize.componentHeight};\n\tpadding: ${componentSize.componentPadding};\n\tmargin: ${componentSize.componentMargin};\n\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tborder-radius: ${border.borderRadius};\n}`;
 
-function EditorPage({color, componentSize}) {
-    const data = ["red", "2", "2", "1", "2", "solid", "pink", "10"];
+    setStyledComponent(textStyled);
+    setJs(textReact);
+    setCss(textCss);
+  }, [
+    styledComponent,
+    css,
+    js,
+    color,
+    componentSize.componentHeight,
+    componentSize.componentPadding,
+    componentSize.componentMargin,
+    componentSize.componentWidth,
+    border,
+    boxShadow,
+    shadowColor,
+  ]);
 
-    const [styledComponent, setStyledComponent] = useState("");
-    const [css, setCss] = useState("");
-    const [js, setJs] = useState("");
-    const [error, setError] = useState("");
-  
-    useEffect(() => {
-      // const textStyled =
-      //   `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
-      //   `\n\t\tcolor: ${data[0]};\n\t\tfont-size: ${data[1]}rem;\n\t\tmargin: ${data[2]}rem;\n\t\tpadding: ${data[3]}rem;\n\t\tborder: ${data[4]}px ${data[5]} ${data[6]};\n\t\tborder-radius: ${data[7]}px;\n` +
-      //   "\t;\n\n\treturn <Button> Normal Button </Button>;\n}\n\nexport default Button;";
-      const textStyled =
-        `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
-        `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n` +
-        "\t;\n\n\treturn <Button> Normal Button </Button>;\n}\n\nexport default Button;";
-      const textReact =
-        'import React from "react";\n\nfunction Button() {\n\n\treturn <button className="btn">Normal Button</button>;\n}\n\nexport default Button;';
-      const textCss = `.btn {\n\tcolor: ${data[0]};\n\tfont-size: ${data[1]}rem;\n\tmargin: ${data[2]}rem;\n\tpadding: ${data[3]}rem;\n\tborder: ${data[4]}px ${data[5]} ${data[6]};\n\tborder-radius: ${data[7]}px;\n}`;
-  
-      setStyledComponent(textStyled);
-      setJs(textReact);
-      setCss(textCss);
-    }, [styledComponent, css, js, color]);
-
-    //saved the component to the user database
-    const handleSaveComponent = async () =>{
-      const obj = {
-        name: "blue button",
-        styledComponent: styledComponent,
-        jsComponent: "js component",
-        cssComponent: "css component",
-        global: true,
-        category: "Buttons",
-      };
-      try {
-        const response = await myApi.post("/savedcomponents", obj);
-        console.log("component: ", response.data.styledComponent);
-      } catch (e) {
-        setError(e.response.data.message);
-      }
+  //saved the component to the user database includes props array
+  const handleSaveComponent = async () => {
+    const obj = {
+      name: componentName,
+      styledComponent: styledComponent,
+      jsComponent: js,
+      cssComponent: css,
+      global: true,
+      category: "Buttons",
+      propsArr: [
+        color,
+        componentSize.componentWidth,
+        componentSize.componentHeight,
+        componentSize.componentPadding,
+        componentSize.componentMargin,
+        border.borderWidth,
+        border.borederStyle,
+        borderColor,
+        boxShadow.hOffSet,
+        boxShadow.vOffSet,
+        boxShadow.blur,
+        shadowColor,
+        border.borderRadius,
+      ],
+    };
+    try {
+      const response = await myApi.post("/savedcomponents", obj);
+      console.log("component: ", response.data.styledComponent);
+      setShowSavedMassege(true);
+    } catch (e) {
+      setError(e.response.data.message);
     }
+  };
 
 
-  
-    return (
-      <>
+
+  return (
+    <>
       {error && <div>{error}</div>}
-        <div className="pane top-pane">
-          <Editor
-            language="javascript"
-            displayName="styled-component"
-            value={styledComponent}
-            // onChange={setStyledComponent}
-          />
-          <Editor
-            language="css"
-            displayName="CSS"
-            value={css}
-            //onChange={setCss}
-          />
-          <Editor
-            language="javascript"
-            displayName="JS"
-            value={js}
-            //onChange={setJs}
-          />
-        </div>
-        <div className="pane">
-          {/* <iframe
-            title="output"
-            sandbox="allow-scripts"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-          ></iframe> */}
-        </div>
-        <button onClick={handleSaveComponent}>Save</button>
-      </>
-    );
-  }
+      {showSave && !showSavedMassege && <div className="editor-save_btn">
+        <label>Give your component a name: </label>
+        <input
+          value={componentName}
+          onChange={(e)=>setComponentName(e.target.value)}
+        ></input>
+         <button
+          className={componentName ? "display-save" : "display-unsave"}
+          onClick={handleSaveComponent}
+          disabled={componentName ? false : true}
+        >
+          Save
+        </button>
+      </div>}
+      {showSavedMassege && <div className="show-saved-message_container"><p>Added to your profile</p><Link to="/user-profile">Go to profile</Link></div>}
+      <div className="pane top-pane">
+        <Editor
+          language="javascript"
+          displayName="styled-component"
+          value={styledComponent}
+        />
+        <Editor language="css" displayName="CSS" value={css} />
+        <Editor language="javascript" displayName="JS" value={js} />
+      </div>
+    </>
+  );
+}
 
-  export default EditorPage;
-
+export default EditorPage;

@@ -13,11 +13,10 @@ function Button({color, borderColor, componentSize, border, boxShadow, shadowCol
     box-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};
     border-radius: ${border.borderRadius}`;
 
-    return <Button>Style ME!</Button>;
+    return <Button></Button>;
 }
 
 
 export default Button;
 
 
-// $('#YouRow').css('margin-top', '6px');

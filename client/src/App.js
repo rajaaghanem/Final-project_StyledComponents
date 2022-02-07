@@ -14,6 +14,9 @@ import Navbar from "./components/navbar/Navbar";
 import HomePage from "./pages/homepage/HomePage";
 import CategoriesPage from "./pages/categoriesPage/CategoriesPage";
 import GreenButtonPage from "./pages/buttonsPages/greenButtonpage/GreenButtonPage";
+import ChooseButtonPage from "./pages/buttonsPages/chooseButtonPage/ChooseButtonPage";
+import RoundButtonPage from "./pages/buttonsPages/roundButtonPage/RoundButtonPage";
+import UserButtonsGenerate from "./pages/userButtonsGenerate/UserButtonsGenerate";
 
 function App() {
  
@@ -36,7 +39,9 @@ function App() {
               <Route path="/user-profile" exact component={UserProfile}/>
               <Route path="/categories-page" exact component={CategoriesPage}/>
               <Route path="/greenButton-page" exact component={GreenButtonPage}/>
-
+              <Route path="/chooseButton-page" exact component={ChooseButtonPage}/>
+              <Route path="/roundButton-page" exact component={RoundButtonPage}/>
+              <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/>
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>

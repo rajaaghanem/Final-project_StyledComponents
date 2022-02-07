@@ -15,7 +15,6 @@
   width: 20vw;
   height: 35vh;
   text-align: center;
-  border: 0.1rem solid rgba(59, 5, 41, 0.445);
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -29,9 +28,13 @@
 }
 
 .categories_container > a:hover {
-  background-color: #19073aa8;
-  color: #ee0d898e;
+  color: #19073a;
+  background: url("./imgs/buttondcover.jfif") no-repeat center center/cover;
 }
+
+/* .categories_container .buttons:hover {
+  background: url("./imgs/buttondcover.jfif") no-repeat center center/cover;
+} */
 
 .categories-cards {
   font-size: 3rem;
@@ -39,3 +42,12 @@
   padding: 2rem;
   border-radius: 2rem;
 }
+
+/* .buttons {
+  background: url("./imgs/buttondcoverdark.jfif") no-repeat center center/cover;
+  background-color: transparent;
+} */
+
+/* .btn-title {
+  background-color: #ffffff4f;
+} */

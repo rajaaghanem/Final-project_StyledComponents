@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import RoundButton from '../../../components/buttons/greenButton/RoundButton';
 import EditorPage from "../../../components/editorpage/EditorPage";
 import Tools from "../../../components/tools/Tools";
-import GreenBUtton from "../../../components/buttons/greenButton/GreenButton";
-import "./greenButtonPage.css";
 
-function GreenButtonPage() {
+function RoundButtonPage() {
   const [selectedColor, setSelectedColor] = useState("#19073a");
-  const [componentSize, setComponentSize] = useState({componentWidth: "130px",componentHeight: "70px",componentPadding: "20px",componentMargin: "20px",
+  const [componentSize, setComponentSize] = useState({componentWidth: "130px",componentHeight: "130px",componentPadding: "20px",componentMargin: "20px",
   });
   const [selectedBorderColor, setSelectedBorderColor] = useState("#0C797D");
   const [selectedBoreder, setSelectedBoreder] = useState({
-    borderWidth: "3px",
-    borederStyle: "dotted",
-    borderRadius: "4px",
+    borderWidth: "7px",
+    borederStyle: "double",
+    borderRadius: "100px",
   });
   const [boxShadow, setBoxShadow] = useState({
     hOffSet: "4px",
@@ -41,7 +40,7 @@ function GreenButtonPage() {
           setSelectedShadowColor={setSelectedShadowColor}
         />
         <div className="styled-component_button">
-          <GreenBUtton
+          <RoundButton
             color={selectedColor}
             componentSize={componentSize}
             borderColor={selectedBorderColor}
@@ -64,6 +63,7 @@ function GreenButtonPage() {
       </div>
     </div>
   </div>;
+  
 }
 
-export default GreenButtonPage;
+export default RoundButtonPage;
