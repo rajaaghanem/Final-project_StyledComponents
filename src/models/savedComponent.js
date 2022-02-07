@@ -32,6 +32,10 @@ const savedComponentSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  propsArr: {
+    type: Array,
+    required: true,
+  }
 });
 
 const SavedComponent = mongoose.model("SavedComponent", savedComponentSchema);

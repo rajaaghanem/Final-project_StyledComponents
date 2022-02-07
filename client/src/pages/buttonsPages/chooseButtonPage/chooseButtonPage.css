@@ -1,0 +1,31 @@
+.component-style_cards_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 91vh;
+  background-color: lightgray;
+}
+
+.component-style_cards_container a {
+  width: 20vw;
+  height: 35vh;
+  text-align: center;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  box-shadow: 1rem 1rem 1rem grey;
+  background-color: #19073a;
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.component-blue_btn {
+  background: url("./imgs/bluebutton.jpg") no-repeat center center/cover;
+}
+
+.component-round_btn {
+  background: url("./imgs/roundButton.jpg") no-repeat center center/cover;
+}

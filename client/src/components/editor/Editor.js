@@ -18,7 +18,7 @@ function Editor(props) {
     <div className="editor-container">
       <div className="editor-title">
         { displayName }
-        <button>copy</button>
+        <button>Copy</button>
       </div>
       <ControlledEditor
         onBeforeChange={handleChange}

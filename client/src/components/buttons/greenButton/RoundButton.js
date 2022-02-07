@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function GreenButton({
+function RoundButton({
   color,
   borderColor,
   componentSize,
@@ -9,7 +9,8 @@ function GreenButton({
   boxShadow,
   shadowColor,
 }) {
-  const GreenButton = styled.button`
+
+    const RoundButton = styled.button`
     background-color: ${color};
     width: ${componentSize.componentWidth};
     height: ${componentSize.componentHeight};
@@ -23,9 +24,9 @@ function GreenButton({
 
   return (
     <div>
-      <GreenButton> </GreenButton>
+      <RoundButton> </RoundButton>
     </div>
   );
 }
 
-export default GreenButton;
+export default RoundButton;

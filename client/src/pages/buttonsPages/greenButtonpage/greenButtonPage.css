@@ -1,6 +1,7 @@
 .styled-component_button {
-  width: 70vw;
+  width: 76vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: whitesmoke;
 }

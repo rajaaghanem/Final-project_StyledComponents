@@ -16,10 +16,10 @@ function Navbar() {
 
   console.log("currentUser in navbar", currentUser);
   return <div className='navbar-container'>
-      <div>components Library</div>
+      <Link to="/categories-page"><div>components Library</div></Link>
       <div>
           { currentUser && <Link onClick={hanldeLogout}>Log Out</Link>}
-          { currentUser && <Link>user profile</Link>}
+          { currentUser && <Link to="/user-profile">Profile</Link>}
           
       </div>
   </div>;
