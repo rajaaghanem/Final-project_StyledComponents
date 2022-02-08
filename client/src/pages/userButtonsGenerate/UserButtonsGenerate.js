@@ -23,7 +23,7 @@ function UserButtonsGenerate(props) {
       const id = componentId;
       try {
         const response = await myApi.get(`/savedcomponents/find/${id}`);
-        console.log(response.data.propsArr);
+        console.log(response);
         setComponentPropsArray(response.data.propsArr);
         //creating the componentSize object
         setComponentSize({
