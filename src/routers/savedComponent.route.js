@@ -45,19 +45,6 @@ router.get(
   }
 );
 
-//Get all saved components of the logged in user
-router.get("/api/savedcomponents", auth, async (req, res) => {
-  try {
-    // const savedComponent = await SavedComponent.find({owner: req.user._id});
-    // res.send(savedComponent);
-
-    await req.user.populate("savedComponents");
-    res.send(req.user.savedComponents);
-  } catch (e) {
-    res.status(400).send(e.message);
-  }
-});
-
 //Get savedComponent by id
 router.get("/api/savedcomponents/find/:id", auth, async (req, res) => {
   // const _id = req.params.id;
@@ -78,6 +65,21 @@ router.get("/api/savedcomponents/find/:id", auth, async (req, res) => {
     res.status(500).send(e.message);
   }
 });
+
+
+//Get all saved components of the logged in user
+router.get("/api/savedcomponents", auth, async (req, res) => {
+  try {
+    // const savedComponent = await SavedComponent.find({owner: req.user._id});
+    // res.send(savedComponent);
+
+    await req.user.populate("savedComponents");
+    res.send(req.user.savedComponents);
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+});
+
 
 //Update a saved copmonent fields
 router.patch("/api/savedcomponents/:id", auth, async (req, res) => {
