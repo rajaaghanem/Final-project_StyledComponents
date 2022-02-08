@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Tools from "../tools/Tools";
-import Button from "../button/Button";
+import Button from "../buttons/buttonForGenerate/Button";
 import EditorPage from "../editorpage/EditorPage";
 import "./tools-page.css";
 

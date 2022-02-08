@@ -39,6 +39,7 @@ function GreenButtonPage() {
           setBoxShadow={setBoxShadow}
           selectedShadowColor={selectedShadowColor}
           setSelectedShadowColor={setSelectedShadowColor}
+          inner={false}
         />
         <div className="styled-component_button">
           <GreenBUtton
@@ -60,6 +61,7 @@ function GreenButtonPage() {
           boxShadow={boxShadow}
           shadowColor={selectedShadowColor}
           showSave={true}
+          type={"buttons"}
         />
       </div>
     </div>

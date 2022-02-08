@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 25rem;
+  height: max-content;
+  margin: 4rem;
 }
 
 .component-delete_btn {

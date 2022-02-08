@@ -1,5 +1,5 @@
 .navbar-container {
-  /* height: 5rem; */
+  height: 4rem;
   background-color: #19073a;
   box-shadow: 0.3rem 0.3rem 0.3rem rgb(80, 78, 78);
   color: #f5b937;
@@ -10,10 +10,6 @@
   font-size: 1.6rem;
   padding: 1rem;
   font-weight: bold;
-  /* position: fixed; */
-  /* top: 0;
-  left: 0;
-  width: 100%; */
 }
 
 .navbar-container div {

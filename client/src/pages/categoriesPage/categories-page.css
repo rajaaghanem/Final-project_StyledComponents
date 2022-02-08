@@ -5,10 +5,12 @@
   align-items: center;
   min-height: 91vh;
   background-color: lightgray;
+  flex-wrap: wrap;
 }
 
 .categories_container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .categories_container > a {
@@ -25,6 +27,7 @@
   background-color: #19073a;
   text-decoration: none;
   color: whitesmoke;
+  flex-wrap: wrap;
 }
 
 .categories_container > a:hover {
@@ -32,22 +35,9 @@
   background: url("./imgs/buttondcover.jfif") no-repeat center center/cover;
 }
 
-/* .categories_container .buttons:hover {
-  background: url("./imgs/buttondcover.jfif") no-repeat center center/cover;
-} */
-
 .categories-cards {
-  font-size: 3rem;
+  font-size: 2.5vw;
   font-weight: bold;
   padding: 2rem;
   border-radius: 2rem;
 }
-
-/* .buttons {
-  background: url("./imgs/buttondcoverdark.jfif") no-repeat center center/cover;
-  background-color: transparent;
-} */
-
-/* .btn-title {
-  background-color: #ffffff4f;
-} */

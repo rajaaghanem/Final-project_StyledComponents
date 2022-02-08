@@ -17,6 +17,8 @@ import GreenButtonPage from "./pages/buttonsPages/greenButtonpage/GreenButtonPag
 import ChooseButtonPage from "./pages/buttonsPages/chooseButtonPage/ChooseButtonPage";
 import RoundButtonPage from "./pages/buttonsPages/roundButtonPage/RoundButtonPage";
 import UserButtonsGenerate from "./pages/userButtonsGenerate/UserButtonsGenerate";
+import ChooseCardPage from "./pages/cardsPages/chooseCardPage/ChooseCardPage";
+import NormalCardPage from "./pages/cardsPages/normalCardPage/NormalCardPage";
 
 function App() {
  
@@ -40,8 +42,10 @@ function App() {
               <Route path="/categories-page" exact component={CategoriesPage}/>
               <Route path="/greenButton-page" exact component={GreenButtonPage}/>
               <Route path="/chooseButton-page" exact component={ChooseButtonPage}/>
+              <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>
-              <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/>
+              <Route path="/normalCard-page" exact component={NormalCardPage}/>
+              <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/>
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>

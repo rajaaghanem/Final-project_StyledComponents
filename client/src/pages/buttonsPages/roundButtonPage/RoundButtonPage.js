@@ -38,6 +38,7 @@ function RoundButtonPage() {
           setBoxShadow={setBoxShadow}
           selectedShadowColor={selectedShadowColor}
           setSelectedShadowColor={setSelectedShadowColor}
+          inner={false}
         />
         <div className="styled-component_button">
           <RoundButton
@@ -59,6 +60,7 @@ function RoundButtonPage() {
           boxShadow={boxShadow}
           shadowColor={selectedShadowColor}
           showSave={true}
+          type={"buttons"}
         />
       </div>
     </div>
