@@ -19,11 +19,13 @@ function UserButtonsGenerate(props) {
 
   //get component by id and set the state objects
   useEffect(() => {
+    console.log(props.match.params.id);
     const handleComponentById = async () => {
       const id = componentId;
       try {
         const response = await myApi.get(`/savedcomponents/find/${id}`);
         console.log(response);
+        
         setComponentPropsArray(response.data.propsArr);
         //creating the componentSize object
         setComponentSize({
