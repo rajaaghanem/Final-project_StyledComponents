@@ -50,11 +50,11 @@ router.get(
 //Get all saved components of the logged in user
 router.get("/api/savedcomponents", auth, async (req, res) => {
   try {
-    // const savedComponent = await SavedComponent.find({owner: req.user._id});
-    // res.send(savedComponent);
+    const savedComponent = await SavedComponent.find({owner: req.user._id});
+    res.send(savedComponent);
 
-    await req.user.populate("savedComponents");
-    res.send(req.user.savedComponents);
+    // await req.user.populate("savedComponents");
+    // res.send(req.user.savedComponents);
   } catch (e) {
     res.status(400).send(e.message);
   }
