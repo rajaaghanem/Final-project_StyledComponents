@@ -10,5 +10,4 @@ axios.defaults.headers.common['Authorization'] =  "Bearer " + `${localStorage.ge
 
 export default axios.create({
   baseURL: myUrl,
-  headers: {'content-type': 'application/json' }
 });
