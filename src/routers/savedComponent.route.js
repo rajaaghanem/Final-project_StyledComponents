@@ -61,7 +61,7 @@ router.get("/api/savedcomponents", auth, async (req, res) => {
 });
 
 //Get savedComponent by id
-router.get("/api/savedcomponents/find/:id", auth, async (req, res) => {
+router.get("/api/savedcomponents/:id", auth, async (req, res) => {
   // const _id = req.params.id;
   console.log(req.params.id);
 
