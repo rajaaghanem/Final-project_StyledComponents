@@ -44,7 +44,7 @@ function UserButtonsGenerate(props) {
           vOffSet: response.data.propsArr[9],
           blur: response.data.propsArr[10],
         });
-        // setSelectedColorInner(response.data.propsArr[13])
+        setSelectedColorInner(response.data.propsArr[13])
       } catch (e) {
         console.table(e);
         // setError(e.response.message);
@@ -93,7 +93,7 @@ function UserButtonsGenerate(props) {
           border={selectedBoreder}
           boxShadow={boxShadow}
           shadowColor={componentPropsArray[11]}
-          // selectedColorInner={componentPropsArray[13]}
+          selectedColorInner={componentPropsArray[13]}
           />}
         </div>
         <div>
@@ -107,7 +107,7 @@ function UserButtonsGenerate(props) {
             border={selectedBoreder}
             boxShadow={boxShadow}
             shadowColor={componentPropsArray[11]}
-            // selectedColorInner={componentPropsArray[13]}
+            selectedColorInner={componentPropsArray[13]}
             showSave={false}
             type={type}
           />
