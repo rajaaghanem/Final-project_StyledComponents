@@ -46,6 +46,7 @@ function UserButtonsGenerate(props) {
         });
         setSelectedColorInner(response.data.propsArr[13])
       } catch (e) {
+        console.table(e);
         // setError(e.response.message);
         console.log(error);
       }
