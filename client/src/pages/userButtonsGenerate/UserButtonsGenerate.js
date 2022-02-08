@@ -44,7 +44,7 @@ function UserButtonsGenerate(props) {
           blur: response.data.propsArr[10],
         });
       } catch (e) {
-        setError(e.response.message);
+        // setError(e.response.message);
         console.log(error);
       }
     };
@@ -62,7 +62,7 @@ function UserButtonsGenerate(props) {
       console.log("update component by id: ", response);
       history.push("/user-profile");
     } catch (e) {
-      setError(e.response.data.message);
+      // setError(e.response.data.message);
     }
   };
 
