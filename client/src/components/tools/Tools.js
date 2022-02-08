@@ -20,7 +20,9 @@ function Tools({
   boxShadow,
   setBoxShadow,
   selectedShadowColor,
-  setSelectedShadowColor
+  setSelectedShadowColor,
+  inner,
+  setSelectedColorInner,
 }) {
 
 
@@ -65,6 +67,9 @@ function Tools({
           <ColorPicker
             value={selectedColor}
             setSelectedColor={setSelectedColor}
+            
+            setSelectedColorInner={setSelectedColorInner}
+            inner={inner}
           />
           </div>
           <div className="component-size_container">

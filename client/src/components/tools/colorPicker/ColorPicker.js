@@ -3,7 +3,7 @@ import { SketchPicker} from 'react-color';
 import rgbHex from 'rgb-hex';
 
 
-function ColorPicker({value, setSelectedColor}) {
+function ColorPicker({value, setSelectedColor, setSelectedColorInner, inner}) {
   const [backgroundRgb, setBackgroundRgb] = useState({r: 25, g: 7, b: 58, a: 100});
   const [backgroundHex, setBackgroundHex] = useState("#19073a");
   
@@ -15,7 +15,8 @@ function ColorPicker({value, setSelectedColor}) {
   
   //changing the selecedColor in Tools
   useEffect(() => {
-    setSelectedColor(backgroundHex);  
+    if(inner) setSelectedColorInner(backgroundHex)
+    else setSelectedColor(backgroundHex);  
   }, [backgroundHex, setSelectedColor]);
 
   console.log(backgroundRgb);
