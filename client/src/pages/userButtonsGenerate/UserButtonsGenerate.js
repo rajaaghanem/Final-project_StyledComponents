@@ -13,6 +13,7 @@ function UserButtonsGenerate(props) {
   const [componentSize, setComponentSize] = useState({});
   const [selectedBoreder, setSelectedBoreder] = useState({});
   const [boxShadow, setBoxShadow] = useState({});
+  const [selectedColorInner, setSelectedColorInner] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
 
@@ -43,6 +44,7 @@ function UserButtonsGenerate(props) {
           vOffSet: response.data.propsArr[9],
           blur: response.data.propsArr[10],
         });
+        setSelectedColorInner(response.data.propsArr[13])
       } catch (e) {
         // setError(e.response.message);
         console.log(error);

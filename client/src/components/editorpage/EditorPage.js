@@ -21,36 +21,23 @@ function EditorPage({
   const [error, setError] = useState("");
   const [componentName, setComponentName] = useState("");
   const [showSavedMassege, setShowSavedMassege] = useState(false);
+  const [innerColor, setInnerColor] = useState("");
 
   let textStyled, textReact, textCss;
 
   useEffect(() => {
-    // let textStyled, textReact, textCss;
     if (type === "buttons") {
-      // textStyled =
-      //   `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
-      //   `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n\t\tmargin: ${componentSize.componentMargin};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};` +
-      //   "\t\n\n\treturn <Button> </Button>;\n}\n\nexport default Button;";
-      // textReact =
-      //   'import React from "react";\n\nfunction Button() {\n\n\treturn <button className="btn"> </button>;\n}\n\nexport default Button;';
-      // textCss = `.btn {\n\tbackground-color: ${color};\n\twidth: ${componentSize.componentWidth};\n\theight: ${componentSize.componentHeight};\n\tpadding: ${componentSize.componentPadding};\n\tmargin: ${componentSize.componentMargin};\n\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tborder-radius: ${border.borderRadius};\n}`;
-
-      // setStyledComponent(textStyled);
-      // setJs(textReact);
-      // setCss(textCss);
+      setInnerColor("");
       addTextOfButton();
+
     } else if (type === "cards") {
-      // textStyled =
-      //   `import styled from "styled-components";\nimport React from "react";\n\nfunction Card() {\n\n\tconst Card = styled.div` +
-      //   `\n\t\tdisplay: flex;\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};\n\t\tjustify-content: space-around;\n` +
-      //   `\n\tconst Content = styled.div\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: 50px;\n\t\tborder-radius: 15px 15px 0px 0px;\n\t\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tbackground-color:  ${selectedColorInner};` +
-      //   "\t\n\n\treturn <Card> <Content>Title</Content> </Card>;\n}\n\nexport default Card;";
-      //   textReact =
-      //   'import React from "react";\n\nfunction Card() {\n\n\treturn <div className="card"> <div className="card-content"></div> </div>;\n}\n\nexport default Card;';
-      //   textCss = `.card {\n\tdisplay: flex;\n\tbackground-color: ${color};\n\twidth: ${componentSize.componentWidth};\n\theight: ${componentSize.componentHeight};\n\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tborder-radius: ${border.borderRadius};\n\tjustify-content: space-around;\n} \n.card-content{\n\twidth: ${componentSize.componentWidth};\n\theight: 50px;\n\tborder-radius: 15px 15px 0px 0px;\n\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tbackground-color:  ${selectedColorInner};\n}`;
-      //   setStyledComponent(textStyled);
-      //   setJs(textReact);
-      //   setCss(textCss);
+
+      if(selectedColorInner){
+        setInnerColor(selectedColorInner);
+
+      }else{
+        setInnerColor("");
+      } 
       addTextOfCard();
     }
   }, [
@@ -89,7 +76,7 @@ function EditorPage({
       "\t\n\n\treturn <Card> <Content>Title</Content> </Card>;\n}\n\nexport default Card;";
     textReact =
       'import React from "react";\n\nfunction Card() {\n\n\treturn <div className="card"> <div className="card-content"></div> </div>;\n}\n\nexport default Card;';
-    textCss = `.card {\n\tdisplay: flex;\n\tbackground-color: ${color};\n\twidth: ${componentSize.componentWidth};\n\theight: ${componentSize.componentHeight};\n\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tborder-radius: ${border.borderRadius};\n\tjustify-content: space-around;\n} \n.card-content{\n\twidth: ${componentSize.componentWidth};\n\theight: 50px;\n\tborder-radius: 15px 15px 0px 0px;\n\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tbackground-color:  ${selectedColorInner};\n}`;
+    textCss = `.card {\n\tdisplay: flex;\n\tbackground-color: ${color};\n\twidth: ${componentSize.componentWidth};\n\theight: ${componentSize.componentHeight};\n\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tborder-radius: ${border.borderRadius};\n\tjustify-content: space-around;\n} \n.card-content{\n\twidth: ${componentSize.componentWidth};\n\theight: 50px;\n\tborder-radius: 15px 15px 0px 0px;\n\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\tbackground-color:  ${innerColor};\n}`;
 
     setStyledComponent(textStyled);
     setJs(textReact);
@@ -121,7 +108,7 @@ function EditorPage({
         boxShadow.blur,
         shadowColor,
         border.borderRadius,
-        selectedColorInner,
+        innerColor,
       ],
     };
     try {
