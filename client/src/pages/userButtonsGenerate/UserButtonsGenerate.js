@@ -23,7 +23,7 @@ function UserButtonsGenerate(props) {
     const handleComponentById = async () => {
       const id = componentId;
       try {
-        const response = await myApi.get(`/savedcomponents/find/${id}`);
+        const response = await myApi.get(`/savedcomponents/find/${componentId}`);
         console.log(response);
         
         setComponentPropsArray(response.data.propsArr);
