@@ -5,6 +5,7 @@ import Button from "../../components/buttons/buttonForGenerate/Button";
 import { useHistory } from "react-router-dom";
 import "./userButtonsGenerate.css";
 import NormalCard from "../../components/cards/normalCard/NormalCard";
+import { useAuth } from "../../contexts/AuthContext";
 
 function UserButtonsGenerate(props) {
   const [componentId, setComponentId] = useState(props.match.params.id);
@@ -16,15 +17,17 @@ function UserButtonsGenerate(props) {
   const [selectedColorInner, setSelectedColorInner] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+  const { currentToken } = useAuth();
 
   //get component by id and set the state objects
   useEffect(() => {
     console.log(props.match.params.id);
     const handleComponentById = async () => {
       const id = componentId;
+      const token = localStorage.getItem('token');
       try {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
-        const response = await myApi(localStorage.getItem('token')).get(`savedcomponents/${componentId}`);
+        const response = await myApi(token).get(`savedcomponents/${componentId}`);
 
         console.log(response);
         

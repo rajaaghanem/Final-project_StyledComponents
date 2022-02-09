@@ -120,6 +120,7 @@ export function AuthProvider({ children }) {
     setError("");
 
     const handleGetUser = async () => {
+     console.log(localStorage.token);
       try {
         const response = await myApi(localStorage.getItem('token')).get("/users/me");
         setCurrentUser(response.data);
