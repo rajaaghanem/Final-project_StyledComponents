@@ -28,31 +28,58 @@ function UserButtonsGenerate(props) {
       const token = localStorage.getItem('token');
       try {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
-        const response = await myApi(token).get(`savedcomponents/${componentId}`);
-
-        console.log(response);
-        setType(response.data.category);
-        setComponentPropsArray(response.data.propsArr);
+        // const response = await myApi(token).get(`savedcomponents/${componentId}`);
+        const res = await myApi(localStorage.getItem('token')).get("/savedcomponents");
+        let component=res.data.filter((component)=>{
+         return component._id === componentId;
+        })
+        component=component[0];
+        
+        setType(component.category);
+        setComponentPropsArray(component.propsArr);
         //creating the componentSize object
         setComponentSize({
-          componentWidth: response.data.propsArr[1],
-          componentHeight: response.data.propsArr[2],
-          componentPadding: response.data.propsArr[3],
-          componentMargin: response.data.propsArr[4],
+          componentWidth: component.propsArr[1],
+          componentHeight: component.propsArr[2],
+          componentPadding: component.propsArr[3],
+          componentMargin: component.propsArr[4],
         });
         //creating the selectedBoreder object
         setSelectedBoreder({
-          borderWidth: response.data.propsArr[5],
-          borederStyle: response.data.propsArr[6],
-          borderRadius: response.data.propsArr[12],
+          borderWidth: component.propsArr[5],
+          borederStyle: component.propsArr[6],
+          borderRadius: component.propsArr[12],
         });
         //creating the boxShadow object
         setBoxShadow({
-          hOffSet: response.data.propsArr[8],
-          vOffSet: response.data.propsArr[9],
-          blur: response.data.propsArr[10],
+          hOffSet: component.propsArr[8],
+          vOffSet: component.propsArr[9],
+          blur: component.propsArr[10],
         });
-        setSelectedColorInner(response.data.propsArr[13])
+        setSelectedColorInner(component.propsArr[13])
+
+        // setType(response.data.category);
+        // setComponentPropsArray(response.data.propsArr);
+        // //creating the componentSize object
+        // setComponentSize({
+        //   componentWidth: response.data.propsArr[1],
+        //   componentHeight: response.data.propsArr[2],
+        //   componentPadding: response.data.propsArr[3],
+        //   componentMargin: response.data.propsArr[4],
+        // });
+        // //creating the selectedBoreder object
+        // setSelectedBoreder({
+        //   borderWidth: response.data.propsArr[5],
+        //   borederStyle: response.data.propsArr[6],
+        //   borderRadius: response.data.propsArr[12],
+        // });
+        // //creating the boxShadow object
+        // setBoxShadow({
+        //   hOffSet: response.data.propsArr[8],
+        //   vOffSet: response.data.propsArr[9],
+        //   blur: response.data.propsArr[10],
+        // });
+        // setSelectedColorInner(response.data.propsArr[13])
       } catch (e) {
         console.table(e);
         // setError(e.response);
