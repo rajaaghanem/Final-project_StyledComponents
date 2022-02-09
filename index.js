@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(usersRoute);
 app.use(savedComponentsRoute);
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.resolve(publicPath, 'index.html'));
 });
 
