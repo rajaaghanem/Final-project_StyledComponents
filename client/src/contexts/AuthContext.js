@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import myApi from "../api/API";
+import {myApi} from "../api/API";
 
 const AuthContext = React.createContext();
 
@@ -12,18 +12,18 @@ export function AuthProvider({ children }) {
   const [currentToken, setCurrentToken] = useState();
   const [error, setError] = useState("");
 
-//   const asyncLocalStorage = {
-//     setItem: function (key, value) {
-//         return Promise.resolve().then(function () {
-//             localStorage.setItem(key, value);
-//         });
-//     },
-//     getItem: function (key) {
-//         return Promise.resolve().then(function () {
-//             return localStorage.getItem(key);
-//         });
-//     }
-// };
+  const asyncLocalStorage = {
+    setItem: function (key, value) {
+        return Promise.resolve().then(function () {
+            localStorage.setItem(key, value);
+        });
+    },
+    getItem: function (key) {
+        return Promise.resolve().then(function () {
+            return localStorage.getItem(key);
+        });
+    }
+};
 
   //handle signup user and add his token from localstorage
   async function signup(password, email, name) {
@@ -34,11 +34,11 @@ export function AuthProvider({ children }) {
       name: name,
     };
     try {
-      const response = await myApi.post("/users/signup", obj);
+      const response = await myApi().post("/users/signup", obj);
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      // await asyncLocalStorage.setItem('token', response.data.token);
+      await asyncLocalStorage.setItem('token', response.data.token);
 
     } catch (e) {
       // console.table(e);
@@ -58,13 +58,13 @@ export function AuthProvider({ children }) {
     };
 
     try {
-      const response = await myApi.post("/users/login", obj);
+      const response = await myApi().post("/users/login", obj);
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      // await asyncLocalStorage.setItem('token', response.data.token);
+      await asyncLocalStorage.setItem('token', response.data.token);
 
-      // await asyncLocalStorage.getItem('token');
+      await asyncLocalStorage.getItem('token');
       console.log("local token", localStorage.getItem('token'));
     } catch (e) {
 
@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
     setError("");
 
     try {
-      const response = await myApi.post("/users/logout");
+      const response = await myApi(localStorage.getItem('token')).post("/users/logout");
 
       console.log(response);
       setCurrentUser(null);
@@ -96,22 +96,22 @@ export function AuthProvider({ children }) {
 
   }
 
-  //logout from all user's devices
-  async function logoutFromAll(){
-    setError("");
+  // //logout from all user's devices
+  // async function logoutFromAll(){
+  //   setError("");
 
-    try {
-      const response = await myApi.post("/users/logoutAll");
+  //   try {
+  //     const response = await myApi.post("/users/logoutAll");
 
-      console.log(response);
-      localStorage.clear();
+  //     console.log(response);
+  //     localStorage.clear();
 
-    } catch (e) {
+  //   } catch (e) {
 
-      setError(e.response.data.message);
+  //     setError(e.response.data.message);
       
-    }
-  }
+  //   }
+  // }
 
 
   //get the current user depends on token
@@ -121,7 +121,7 @@ export function AuthProvider({ children }) {
 
     const handleGetUser = async () => {
       try {
-        const response = await myApi.get("/users/me");
+        const response = await myApi(localStorage.getItem('token')).get("/users/me");
         setCurrentUser(response.data);
       } catch (e) {
         setError(e.response.data.message);
@@ -139,7 +139,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
-    logoutFromAll,
+    // logoutFromAll,
     currentToken,
     error,
   };

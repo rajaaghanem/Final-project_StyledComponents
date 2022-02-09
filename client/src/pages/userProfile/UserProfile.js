@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
-import myApi from "../../api/API";
+import {myApi} from "../../api/API";
 import "./userProfile.css";
 
 function UserProfile() {
@@ -11,7 +11,7 @@ function UserProfile() {
   useEffect(() => {
     const handleGetAllUserComponents = async () => {
       try {
-        const response = await myApi.get("/savedcomponents");
+        const response = await myApi(localStorage.getItem('token')).get("/savedcomponents");
         console.log("all components: ", response.data);
         setUserComponents(response.data);
       } catch (e) {
