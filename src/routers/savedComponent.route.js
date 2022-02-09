@@ -6,6 +6,8 @@ const auth = require("../middleware/auth");
 //Add new saved component
 router.post("/api/savedcomponents", auth, async (req, res) => {
   // const savedComponent = new SavedComponent(req.body);
+  console.log(req.body);
+  console.log(req.user);
   const savedComponent = new SavedComponent({
     ...req.body,
     owner: req.user._id,
