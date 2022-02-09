@@ -18,7 +18,7 @@ function Navbar() {
   return <div className='navbar-container'>
       <Link to="/categories-page"><div>components Library</div></Link>
       <div>
-          { currentUser && <Link onClick={hanldeLogout}>Log Out</Link>}
+          { currentUser && <Link to="/" onClick={hanldeLogout}>Log Out</Link>}
           { currentUser && <Link to="/user-profile">Profile</Link>}
           
       </div>

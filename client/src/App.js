@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Switch, BrowserRouter, Route, Link } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import "./App.css";
@@ -22,8 +22,8 @@ import NormalCardPage from "./pages/cardsPages/normalCardPage/NormalCardPage";
 import WelcomePage from "./pages/welxomePage/WelcomePage";
 
 function App() {
+ const [userComponent, setUserComponent] = useState({});
  
-
   return (
     <>
       <AuthProvider>
@@ -39,7 +39,10 @@ function App() {
               <Route path="/logout-page" exact component={Logout} />
               <Route path="/tools-page" exact component={Tools} />
               <Route path="/tools-container" exact component={ToolsPage} />
-              <Route path="/user-profile" exact component={UserProfile}/>
+              {/* <Route path="/user-profile" exact component={UserProfile}/> */}
+              <Route path="/user-profile" exact>
+                <UserProfile setUserComponent={setUserComponent}/>
+              </Route>
               <Route path="/categories-page" exact component={CategoriesPage}/>
               <Route path="/greenButton-page" exact component={GreenButtonPage}/>
               <Route path="/chooseButton-page" exact component={ChooseButtonPage}/>
@@ -48,8 +51,11 @@ function App() {
               <Route path="/normalCard-page" exact component={NormalCardPage}/>
               <Route path="/welcome-page" exact component={WelcomePage}/>
               {/* <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/> */}
-              <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/>
-
+              {/* <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/> */}
+              
+              <Route path="/userButtonsGenerate-page" exact>
+                <UserButtonsGenerate userComponent={userComponent}/>
+              </Route>
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>

@@ -8,7 +8,7 @@ import NormalCard from "../../components/cards/normalCard/NormalCard";
 import { useAuth } from "../../contexts/AuthContext";
 
 function UserButtonsGenerate(props) {
-  const [componentId, setComponentId] = useState(props.match.params.id);
+  // const [componentId, setComponentId] = useState(props.match.params.id);
   // const [type, setType] = useState(props.match.params.type);
   const [type, setType] = useState("");
   const [componentPropsArray, setComponentPropsArray] = useState([]);
@@ -22,43 +22,42 @@ function UserButtonsGenerate(props) {
 
   //get component by id and set the state objects
   useEffect(() => {
-    console.log(props.match.params.id);
+    // console.log(props.match.params.id);
     const handleComponentById = async () => {
-      const id = componentId;
-      const token = localStorage.getItem('token');
+      // const id = componentId;
+      // const token = localStorage.getItem('token');
       try {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
         // const response = await myApi(token).get(`savedcomponents/${componentId}`);
-        const res = await myApi(localStorage.getItem('token')).get("/savedcomponents");
-        console.log(res);
-        let component=res.data.filter((component)=>{
-         return component._id === componentId;
-        })
+        // const res = await myApi(localStorage.getItem('token')).get("/savedcomponents");
+        // console.log(res);
+        // let component=res.data.filter((component)=>{
+        //  return component._id === componentId;
+        // })
         
-        component=component[0];
-        
-        setType(component.category);
-        setComponentPropsArray(component.propsArr);
+        // component=component[0];
+        setType(props.userComponent.category);
+        setComponentPropsArray(props.userComponent.propsArr);
         //creating the componentSize object
         setComponentSize({
-          componentWidth: component.propsArr[1],
-          componentHeight: component.propsArr[2],
-          componentPadding: component.propsArr[3],
-          componentMargin: component.propsArr[4],
+          componentWidth: props.userComponent.propsArr[1],
+          componentHeight: props.userComponent.propsArr[2],
+          componentPadding: props.userComponent.propsArr[3],
+          componentMargin: props.userComponent.propsArr[4],
         });
         //creating the selectedBoreder object
         setSelectedBoreder({
-          borderWidth: component.propsArr[5],
-          borederStyle: component.propsArr[6],
-          borderRadius: component.propsArr[12],
+          borderWidth: props.userComponent.propsArr[5],
+          borederStyle: props.userComponent.propsArr[6],
+          borderRadius: props.userComponent.propsArr[12],
         });
         //creating the boxShadow object
         setBoxShadow({
-          hOffSet: component.propsArr[8],
-          vOffSet: component.propsArr[9],
-          blur: component.propsArr[10],
+          hOffSet: props.userComponent.propsArr[8],
+          vOffSet: props.userComponent.propsArr[9],
+          blur: props.userComponent.propsArr[10],
         });
-        setSelectedColorInner(component.propsArr[13])
+        setSelectedColorInner(props.userComponent.propsArr[13])
 
         // setType(response.data.category);
         // setComponentPropsArray(response.data.propsArr);
@@ -92,9 +91,9 @@ function UserButtonsGenerate(props) {
     handleComponentById();
   }, []);
 
-  //Delete component by id
+  // Delete component by id
   const handleDeleteComponent = async () => {
-    const id = componentId;
+    const id = props.userComponent._id;
 
     try {
       const response = await myApi(localStorage.getItem('token')).delete(`/savedcomponents/${id}`);
