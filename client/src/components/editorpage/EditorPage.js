@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./editorpage.css";
-import myApi from "../../api/API";
+import {myApi} from "../../api/API";
 import Editor from "../editor/Editor";
 import { Link } from "react-router-dom";
 
@@ -112,7 +112,7 @@ function EditorPage({
       ],
     };
     try {
-      const response = await myApi.post("/savedcomponents", obj);
+      const response = await myApi(localStorage.getItem('token')).post("/savedcomponents", obj);
       console.log("component: ", response.data.styledComponent);
       setShowSavedMassege(true);
     } catch (e) {

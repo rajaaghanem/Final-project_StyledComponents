@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import myApi from "../../api/API";
+import {myApi} from "../../api/API";
 import EditorPage from "../../components/editorpage/EditorPage";
 import Button from "../../components/buttons/buttonForGenerate/Button";
 import { useHistory } from "react-router-dom";
@@ -24,7 +24,7 @@ function UserButtonsGenerate(props) {
       const id = componentId;
       try {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
-        const response = await myApi.get(`savedcomponents/${componentId}`);
+        const response = await myApi(localStorage.getItem('token')).get(`savedcomponents/${componentId}`);
 
         console.log(response);
         
@@ -64,7 +64,7 @@ function UserButtonsGenerate(props) {
     const id = componentId;
 
     try {
-      const response = await myApi.delete(`/savedcomponents/${id}`);
+      const response = await myApi(localStorage.getItem('token')).delete(`/savedcomponents/${id}`);
 
       console.log("update component by id: ", response);
       history.push("/user-profile");
