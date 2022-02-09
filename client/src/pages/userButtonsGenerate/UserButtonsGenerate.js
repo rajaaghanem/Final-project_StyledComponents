@@ -24,7 +24,7 @@ function UserButtonsGenerate(props) {
       const id = componentId;
       try {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
-        const response = await myApi.get(`/savedcomponents/${componentId}`);
+        const response = await myApi.get(`savedcomponents/${componentId}`);
 
         console.log(response);
         
