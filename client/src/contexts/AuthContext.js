@@ -62,8 +62,8 @@ export function AuthProvider({ children }) {
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      localStorage.setItem('token', response.data.token);
-
+      await asyncLocalStorage.setItem('token', response.data.token);
+      
     } catch (e) {
 
       setError(e.response.data.message);
