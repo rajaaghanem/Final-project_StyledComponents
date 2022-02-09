@@ -30,9 +30,11 @@ function UserButtonsGenerate(props) {
         // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
         // const response = await myApi(token).get(`savedcomponents/${componentId}`);
         const res = await myApi(localStorage.getItem('token')).get("/savedcomponents");
+        console.log(res);
         let component=res.data.filter((component)=>{
          return component._id === componentId;
         })
+        
         component=component[0];
         
         setType(component.category);
