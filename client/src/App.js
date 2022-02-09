@@ -39,7 +39,6 @@ function App() {
               <Route path="/logout-page" exact component={Logout} />
               <Route path="/tools-page" exact component={Tools} />
               <Route path="/tools-container" exact component={ToolsPage} />
-              {/* <Route path="/user-profile" exact component={UserProfile}/> */}
               <Route path="/user-profile" exact>
                 <UserProfile setUserComponent={setUserComponent}/>
               </Route>
@@ -49,10 +48,7 @@ function App() {
               <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>
               <Route path="/normalCard-page" exact component={NormalCardPage}/>
-              <Route path="/welcome-page" exact component={WelcomePage}/>
-              {/* <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/> */}
-              {/* <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/> */}
-              
+              <Route path="/welcome-page" exact component={WelcomePage}/>              
               <Route path="/userButtonsGenerate-page" exact>
                 <UserButtonsGenerate userComponent={userComponent}/>
               </Route>

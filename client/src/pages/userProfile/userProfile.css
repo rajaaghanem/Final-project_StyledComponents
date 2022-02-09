@@ -16,6 +16,7 @@
   border-radius: 1rem;
   box-shadow: 0.2rem 0.2rem 1rem gray;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .user-component_card:hover {

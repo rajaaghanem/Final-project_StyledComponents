@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {myApi} from "../../api/API";
+import { myApi } from "../../api/API";
 import EditorPage from "../../components/editorpage/EditorPage";
 import Button from "../../components/buttons/buttonForGenerate/Button";
 import { useHistory } from "react-router-dom";
@@ -8,8 +8,6 @@ import NormalCard from "../../components/cards/normalCard/NormalCard";
 import { useAuth } from "../../contexts/AuthContext";
 
 function UserButtonsGenerate(props) {
-  // const [componentId, setComponentId] = useState(props.match.params.id);
-  // const [type, setType] = useState(props.match.params.type);
   const [type, setType] = useState("");
   const [componentPropsArray, setComponentPropsArray] = useState([]);
   const [componentSize, setComponentSize] = useState({});
@@ -22,73 +20,28 @@ function UserButtonsGenerate(props) {
 
   //get component by id and set the state objects
   useEffect(() => {
-    // console.log(props.match.params.id);
-    const handleComponentById = async () => {
-      // const id = componentId;
-      // const token = localStorage.getItem('token');
-      try {
-        // const response = await myApi.get(`/savedcomponents/${componentId}`, {data:{},  headers: {'content-type': 'application/json' }});
-        // const response = await myApi(token).get(`savedcomponents/${componentId}`);
-        // const res = await myApi(localStorage.getItem('token')).get("/savedcomponents");
-        // console.log(res);
-        // let component=res.data.filter((component)=>{
-        //  return component._id === componentId;
-        // })
-        
-        // component=component[0];
-        setType(props.userComponent.category);
-        setComponentPropsArray(props.userComponent.propsArr);
-        //creating the componentSize object
-        setComponentSize({
-          componentWidth: props.userComponent.propsArr[1],
-          componentHeight: props.userComponent.propsArr[2],
-          componentPadding: props.userComponent.propsArr[3],
-          componentMargin: props.userComponent.propsArr[4],
-        });
-        //creating the selectedBoreder object
-        setSelectedBoreder({
-          borderWidth: props.userComponent.propsArr[5],
-          borederStyle: props.userComponent.propsArr[6],
-          borderRadius: props.userComponent.propsArr[12],
-        });
-        //creating the boxShadow object
-        setBoxShadow({
-          hOffSet: props.userComponent.propsArr[8],
-          vOffSet: props.userComponent.propsArr[9],
-          blur: props.userComponent.propsArr[10],
-        });
-        setSelectedColorInner(props.userComponent.propsArr[13])
-
-        // setType(response.data.category);
-        // setComponentPropsArray(response.data.propsArr);
-        // //creating the componentSize object
-        // setComponentSize({
-        //   componentWidth: response.data.propsArr[1],
-        //   componentHeight: response.data.propsArr[2],
-        //   componentPadding: response.data.propsArr[3],
-        //   componentMargin: response.data.propsArr[4],
-        // });
-        // //creating the selectedBoreder object
-        // setSelectedBoreder({
-        //   borderWidth: response.data.propsArr[5],
-        //   borederStyle: response.data.propsArr[6],
-        //   borderRadius: response.data.propsArr[12],
-        // });
-        // //creating the boxShadow object
-        // setBoxShadow({
-        //   hOffSet: response.data.propsArr[8],
-        //   vOffSet: response.data.propsArr[9],
-        //   blur: response.data.propsArr[10],
-        // });
-        // setSelectedColorInner(response.data.propsArr[13])
-      } catch (e) {
-        console.table(e);
-        // setError(e.response);
-        console.log(error);
-      }
-    };
-
-    handleComponentById();
+    setType(props.userComponent.category);
+    setComponentPropsArray(props.userComponent.propsArr);
+    //creating the componentSize object
+    setComponentSize({
+      componentWidth: props.userComponent.propsArr[1],
+      componentHeight: props.userComponent.propsArr[2],
+      componentPadding: props.userComponent.propsArr[3],
+      componentMargin: props.userComponent.propsArr[4],
+    });
+    //creating the selectedBoreder object
+    setSelectedBoreder({
+      borderWidth: props.userComponent.propsArr[5],
+      borederStyle: props.userComponent.propsArr[6],
+      borderRadius: props.userComponent.propsArr[12],
+    });
+    //creating the boxShadow object
+    setBoxShadow({
+      hOffSet: props.userComponent.propsArr[8],
+      vOffSet: props.userComponent.propsArr[9],
+      blur: props.userComponent.propsArr[10],
+    });
+    setSelectedColorInner(props.userComponent.propsArr[13]);
   }, []);
 
   // Delete component by id
@@ -96,12 +49,17 @@ function UserButtonsGenerate(props) {
     const id = props.userComponent._id;
 
     try {
-      const response = await myApi(localStorage.getItem('token')).delete(`/savedcomponents/${id}`);
+      const response = await myApi(localStorage.getItem("token")).delete(
+        `/savedcomponents/${id}`
+      );
 
       console.log("update component by id: ", response);
       history.push("/user-profile");
+
     } catch (e) {
-      // setError(e.response.data.message);
+
+      setError(e.response.data.message);
+      
     }
   };
 
@@ -122,15 +80,17 @@ function UserButtonsGenerate(props) {
               />
             </div>
           )}
-          {type==="cards" && <NormalCard
-          color={componentPropsArray[0]}
-          componentSize={componentSize}
-          borderColor={componentPropsArray[7]}
-          border={selectedBoreder}
-          boxShadow={boxShadow}
-          shadowColor={componentPropsArray[11]}
-          selectedColorInner={componentPropsArray[13]}
-          />}
+          {type === "cards" && (
+            <NormalCard
+              color={componentPropsArray[0]}
+              componentSize={componentSize}
+              borderColor={componentPropsArray[7]}
+              border={selectedBoreder}
+              boxShadow={boxShadow}
+              shadowColor={componentPropsArray[11]}
+              selectedColorInner={componentPropsArray[13]}
+            />
+          )}
         </div>
         <div>
           <div className="component-delete_btn">

@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
 import {myApi} from "../../api/API";
-import Button from '../../components/buttons/buttonForGenerate/Button';
 import "./userProfile.css";
 import { useHistory } from "react-router-dom";
 
@@ -27,6 +25,8 @@ function UserProfile({setUserComponent}) {
 
   }, []);
 
+
+  //handle setuserComponent to component and push history `/userButtonsGenerate-page`
   const handleClick=(component)=>{
     setUserComponent(component);
     history.push(`/userButtonsGenerate-page`);
@@ -35,8 +35,6 @@ function UserProfile({setUserComponent}) {
   //maping over the user components and creats divs for each
   const componentsMap = ()=>{
     return userComponents.map((component)=>{
-      // return <Link to={`/userButtonsGenerate-page/${component._id}/${component.category}/`} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></Link>
-      // return <Link to={`/userButtonsGenerate-page/${component._id}/`} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></Link>
       return <button onClick={()=>handleClick(component)} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></button>
 
 
