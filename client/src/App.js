@@ -45,7 +45,9 @@ function App() {
               <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>
               <Route path="/normalCard-page" exact component={NormalCardPage}/>
-              <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/>
+              {/* <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/> */}
+              <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/>
+
               {/* <Route component={PageNotFound} /> */}
             </Switch>
           </div>

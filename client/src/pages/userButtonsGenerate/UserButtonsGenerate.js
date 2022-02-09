@@ -9,7 +9,8 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function UserButtonsGenerate(props) {
   const [componentId, setComponentId] = useState(props.match.params.id);
-  const [type, setType] = useState(props.match.params.type);
+  // const [type, setType] = useState(props.match.params.type);
+  const [type, setType] = useState("");
   const [componentPropsArray, setComponentPropsArray] = useState([]);
   const [componentSize, setComponentSize] = useState({});
   const [selectedBoreder, setSelectedBoreder] = useState({});
@@ -30,7 +31,7 @@ function UserButtonsGenerate(props) {
         const response = await myApi(token).get(`savedcomponents/${componentId}`);
 
         console.log(response);
-        
+        setType(response.data.category);
         setComponentPropsArray(response.data.propsArr);
         //creating the componentSize object
         setComponentSize({

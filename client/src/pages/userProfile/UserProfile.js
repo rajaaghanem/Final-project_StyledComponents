@@ -27,7 +27,9 @@ function UserProfile() {
   //maping over the user components and creats divs for each
   const componentsMap = ()=>{
     return userComponents.map((component)=>{
-      return <Link to={`/userButtonsGenerate-page/${component._id}/${component.category}/`} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></Link>
+      // return <Link to={`/userButtonsGenerate-page/${component._id}/${component.category}/`} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></Link>
+      return <Link to={`/userButtonsGenerate-page/${component._id}/`} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></Link>
+
     })
   }
 
