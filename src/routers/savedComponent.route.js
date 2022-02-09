@@ -65,15 +65,17 @@ router.get("/api/savedcomponents", auth, async (req, res) => {
 //Get savedComponent by id
 router.get("/api/savedcomponents/:id", auth, async (req, res) => {
   // const _id = req.params.id;
-  console.log(req.params.id);
-
+  console.log("req.params.id",req.params.id);
+  
   try {
     const savedComponent = await SavedComponent.findOne({
       _id: req.params.id,
       owner: req.user._id,
     });
+    console.log("savedComponent", savedComponent);
 
     if (!savedComponent) {
+      console.log("in if", savedComponent);
       return res.status(404).send({ message: "Saved Component not found" });
     }
 

@@ -19,6 +19,7 @@ import RoundButtonPage from "./pages/buttonsPages/roundButtonPage/RoundButtonPag
 import UserButtonsGenerate from "./pages/userButtonsGenerate/UserButtonsGenerate";
 import ChooseCardPage from "./pages/cardsPages/chooseCardPage/ChooseCardPage";
 import NormalCardPage from "./pages/cardsPages/normalCardPage/NormalCardPage";
+import WelcomePage from "./pages/welxomePage/WelcomePage";
 
 function App() {
  
@@ -45,6 +46,7 @@ function App() {
               <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>
               <Route path="/normalCard-page" exact component={NormalCardPage}/>
+              <Route path="/welcome-page" exact component={WelcomePage}/>
               {/* <Route path="/userButtonsGenerate-page/:id/:type" exact component={UserButtonsGenerate}/> */}
               <Route path="/userButtonsGenerate-page/:id" exact component={UserButtonsGenerate}/>
 
