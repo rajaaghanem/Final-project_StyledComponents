@@ -12,18 +12,18 @@ export function AuthProvider({ children }) {
   const [currentToken, setCurrentToken] = useState();
   const [error, setError] = useState("");
 
-  const asyncLocalStorage = {
-    setItem: function (key, value) {
-        return Promise.resolve().then(function () {
-            localStorage.setItem(key, value);
-        });
-    },
-    getItem: function (key) {
-        return Promise.resolve().then(function () {
-            return localStorage.getItem(key);
-        });
-    }
-};
+//   const asyncLocalStorage = {
+//     setItem: function (key, value) {
+//         return Promise.resolve().then(function () {
+//             localStorage.setItem(key, value);
+//         });
+//     },
+//     getItem: function (key) {
+//         return Promise.resolve().then(function () {
+//             return localStorage.getItem(key);
+//         });
+//     }
+// };
 
   //handle signup user and add his token from localstorage
   async function signup(password, email, name) {
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      await asyncLocalStorage.setItem('token', response.data.token);
+      // await asyncLocalStorage.setItem('token', response.data.token);
 
     } catch (e) {
       // console.table(e);
@@ -62,9 +62,9 @@ export function AuthProvider({ children }) {
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      await asyncLocalStorage.setItem('token', response.data.token);
+      // await asyncLocalStorage.setItem('token', response.data.token);
 
-      await asyncLocalStorage.getItem('token');
+      // await asyncLocalStorage.getItem('token');
       console.log("local token", localStorage.getItem('token'));
     } catch (e) {
 
