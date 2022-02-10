@@ -2,30 +2,31 @@ import React, { useState } from "react";
 import EditorPage from "../../../components/editorpage/EditorPage";
 import Tools from "../../../components/tools/Tools";
 import NormalCard from "../../../components/cards/normalCard/NormalCard";
+import "./normalCard.css";
 
 function NormalCardPage() {
 
-  const [selectedColor, setSelectedColor] = useState("#19073a");
+  const [selectedColor, setSelectedColor] = useState("#AC617C");
   const [componentSize, setComponentSize] = useState({
-    componentWidth: "100px",
-    componentHeight: "150px",
+    componentWidth: "130px",
+    componentHeight: "190px",
     componentPadding: "0px",
     componentMargin: "0px",
   });
-  const [selectedBorderColor, setSelectedBorderColor] = useState("#0C797D");
+  const [selectedBorderColor, setSelectedBorderColor] = useState("#FFFFFF");
   const [selectedBoreder, setSelectedBoreder] = useState({
     borderWidth: "3px",
     borederStyle: "none",
     borderRadius: "15px",
   });
   const [boxShadow, setBoxShadow] = useState({
-    hOffSet: "2px",
-    vOffSet: "2px",
-    blur: "5px",
+    hOffSet: "1px",
+    vOffSet: "1px",
+    blur: "3px",
   });
   const [selectedShadowColor, setSelectedShadowColor] = useState("gray");
   const [inner, setInner] = useState(false);
-  const [selectedColorInner, setSelectedColorInner] = useState("");
+  const [selectedColorInner, setSelectedColorInner] = useState("#ECD4D7");
 
   //switch inner to true (switch to inner div)
   const handleInner = () => {
@@ -40,9 +41,10 @@ function NormalCardPage() {
   return (
     <div>
       <div>
+        <div className="tools-page-container">
+        <div className="innet-outer_container">
         <button onClick={handleInner}>Inner</button>
         <button onClick={handleOuter}>Outer</button>
-        <div className="tools-page-container">
           <Tools
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
@@ -62,6 +64,7 @@ function NormalCardPage() {
             selectedColorInner={selectedColorInner}
             inner={inner} //if the user coloring the inner div inner=true
           />
+          </div>
           <div className="styled-component_button">
             <NormalCard
               color={selectedColor}

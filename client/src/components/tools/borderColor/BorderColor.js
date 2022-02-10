@@ -4,7 +4,7 @@ import rgbHex from "rgb-hex";
 
 function BorderColor({setSelectedBorderColor}) {
 
-  const [borderColorHex, setborderColorHex] = useState("#0C797D");
+  const [borderColorHex, setborderColorHex] = useState("#FFFFFF");
   const [borderColorRgb, setborderColorRgb] = useState({});
 
 

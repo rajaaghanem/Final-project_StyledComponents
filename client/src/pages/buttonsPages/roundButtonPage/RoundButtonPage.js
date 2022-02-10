@@ -4,13 +4,13 @@ import EditorPage from "../../../components/editorpage/EditorPage";
 import Tools from "../../../components/tools/Tools";
 
 function RoundButtonPage() {
-  const [selectedColor, setSelectedColor] = useState("#19073a");
+  const [selectedColor, setSelectedColor] = useState("#AC617C");
   const [componentSize, setComponentSize] = useState({componentWidth: "130px",componentHeight: "130px",componentPadding: "20px",componentMargin: "20px",
   });
-  const [selectedBorderColor, setSelectedBorderColor] = useState("#0C797D");
+  const [selectedBorderColor, setSelectedBorderColor] = useState("#FFFFFF");
   const [selectedBoreder, setSelectedBoreder] = useState({
-    borderWidth: "7px",
-    borederStyle: "double",
+    borderWidth: "4px",
+    borederStyle: "dotted",
     borderRadius: "100px",
   });
   const [boxShadow, setBoxShadow] = useState({
