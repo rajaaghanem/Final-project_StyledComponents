@@ -4,8 +4,8 @@ import rgbHex from 'rgb-hex';
 
 
 function ColorPicker({value, setSelectedColor, setSelectedColorInner, inner}) {
-  const [backgroundRgb, setBackgroundRgb] = useState({r: 25, g: 7, b: 58, a: 100});
-  const [backgroundHex, setBackgroundHex] = useState("#19073a");
+  const [backgroundRgb, setBackgroundRgb] = useState({r: 184, g: 108, b: 123, a: 100});
+  const [backgroundHex, setBackgroundHex] = useState("#AC617C");
   
   //handle color picked by the user, convert it to hex and save it in state
   const handleChangeComplete = (color) => {

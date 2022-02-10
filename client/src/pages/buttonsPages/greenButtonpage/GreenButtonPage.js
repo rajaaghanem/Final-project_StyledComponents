@@ -5,13 +5,13 @@ import GreenBUtton from "../../../components/buttons/greenButton/GreenButton";
 import "./greenButtonPage.css";
 
 function GreenButtonPage() {
-  const [selectedColor, setSelectedColor] = useState("#19073a");
+  const [selectedColor, setSelectedColor] = useState("#AC617C");
   const [componentSize, setComponentSize] = useState({componentWidth: "130px",componentHeight: "70px",componentPadding: "20px",componentMargin: "20px",
   });
   const [selectedBorderColor, setSelectedBorderColor] = useState("#0C797D");
   const [selectedBoreder, setSelectedBoreder] = useState({
     borderWidth: "3px",
-    borederStyle: "dotted",
+    borederStyle: "none",
     borderRadius: "4px",
   });
   const [boxShadow, setBoxShadow] = useState({

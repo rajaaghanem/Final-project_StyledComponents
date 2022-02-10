@@ -1,0 +1,15 @@
+:root {
+  --main-color: #ac617dc0;
+}
+
+.innet-outer_container button {
+  width: 7rem;
+  height: 3rem;
+  margin: 1rem;
+  cursor: pointer;
+  margin-left: 4vw;
+  margin-bottom: 0.2vh;
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 1rem;
+}

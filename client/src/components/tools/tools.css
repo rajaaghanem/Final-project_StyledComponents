@@ -2,7 +2,7 @@
   display: flex;
   overflow-y: scroll;
   height: 90vh;
-  width: 26rem;
+  width: 29rem;
   padding: 0 1.5rem;
 }
 
@@ -10,7 +10,7 @@
 .component-border_container,
 .component-background_container {
   border: 0.1rem solid rgba(187, 183, 183, 0.781);
-  width: 22rem;
+  width: 24rem;
   height: max-content;
   padding: 1rem;
   border-radius: 1rem;
@@ -23,10 +23,13 @@
 
 .style-componant-page h3 {
   text-align: center;
-  background-color: rgba(19, 6, 48, 0.897);
+  /* background-color: rgba(19, 6, 48, 0.897); */
+  /* background-color: black; */
+  background-color: rgb(73, 7, 48);
   color: white;
   padding: 0.3rem;
   border-radius: 1rem;
+  margin: 1rem;
   box-shadow: 1rem 1rem 1.2rem gray;
 }
 

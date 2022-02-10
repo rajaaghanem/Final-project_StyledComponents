@@ -1,11 +1,17 @@
+:root {
+  --main-color: #ac617dc0;
+}
+
 .categories-page_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 91vh;
   background-color: lightgray;
   flex-wrap: wrap;
+  min-height: 100vh;
+  padding-top: 7rem;
+  background: url("./imgs/category-cover.jpg") no-repeat center center/cover;
 }
 
 .categories_container {
@@ -24,15 +30,15 @@
   align-items: center;
   border-radius: 2rem;
   box-shadow: 1rem 1rem 1rem gray;
-  background-color: #19073a;
+  background-color: var(--main-color);
   text-decoration: none;
   color: whitesmoke;
   flex-wrap: wrap;
 }
 
 .categories_container > a:hover {
-  color: #19073a;
-  background: url("./imgs/buttondcover.jfif") no-repeat center center/cover;
+  color: var(--main-color);
+  background-color: rgba(211, 211, 211, 0.664);
 }
 
 .categories-cards {
