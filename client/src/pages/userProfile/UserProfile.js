@@ -36,12 +36,9 @@ function UserProfile({setUserComponent}) {
   const componentsMap = ()=>{
     return userComponents.map((component)=>{
       return <button onClick={()=>handleClick(component)} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></button>
-
-
     })
   }
 
-  console.log(userComponents);
 
   return <div><div className='user-components_container'>
     {componentsMap()}
