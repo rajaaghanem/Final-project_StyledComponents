@@ -20,12 +20,12 @@ function Navbar() {
       </Link>
       <div>
         {currentUser && <Link to="/categories-page">Categories</Link>}
+        {currentUser && <Link className="profile-btn" to="/user-profile">Profile</Link>}
         {currentUser && (
           <Link to="/" onClick={hanldeLogout}>
             Log Out
           </Link>
         )}
-        {currentUser && <Link to="/user-profile">Profile</Link>}
       </div>
     </div>
   );

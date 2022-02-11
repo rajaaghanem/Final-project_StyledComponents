@@ -30,6 +30,11 @@
   color: #d6938b;
 }
 
+.profile-btn {
+  margin-right: 4rem;
+  color: #d6938b;
+}
+
 .navbar-container a {
   text-decoration: none;
   /* color: #f5b937; */

@@ -5,12 +5,13 @@ import "./welcomePage.css";
 function WelcomePage() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = [
+    "https://i.ibb.co/2ZzrVT4/but5.jpg",
     "https://i.ibb.co/fnk4DjB/btn1.jpg",
     "https://i.ibb.co/3FmDVb6/round1.jpg",
     "https://i.ibb.co/yWY0Qd4/card1.jpg",
-    "https://images.unsplash.com/photo-1518799937599-77763326c394?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    "https://images.unsplash.com/photo-1631849800674-b3a956469bdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-    "https://images.unsplash.com/photo-1605106715994-18d3fecffb98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHNoYXBlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
+    "https://i.ibb.co/hKyWJgS/btn3.jpg",
+    "https://i.ibb.co/WNh39Zy/card3.jpg",
+    "https://i.ibb.co/C04FPgD/Screenshot-2022-02-11-141622.jpg",
   ];
   
   const NextArrow = ({ onClick }) => {

@@ -27,15 +27,15 @@ function UserProfile({setUserComponent}) {
 
 
   //handle setuserComponent to component and push history `/userButtonsGenerate-page`
-  const handleClick=(component)=>{
-    setUserComponent(component);
+  const handleClick=(chosenComponent)=>{
+    setUserComponent(chosenComponent);
     history.push(`/userButtonsGenerate-page`);
   }
 
   //maping over the user components and creats divs for each
   const componentsMap = ()=>{
-    return userComponents.map((component)=>{
-      return <button onClick={()=>handleClick(component)} className='user-component_card' key={component._id}><div className='user-component_title'>{component.name}</div></button>
+    return userComponents.map((chosenComponent)=>{
+      return <button onClick={()=>handleClick(chosenComponent)} className='user-component_card' key={chosenComponent._id}><div className='user-component_title'>{chosenComponent.name}</div></button>
     })
   }
 
