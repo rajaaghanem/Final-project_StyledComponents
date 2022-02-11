@@ -113,8 +113,8 @@ function Tools({
             <h3>BORDER</h3>
             <div className="component-border-color">
               <label>Border Color</label>
-              <BorderColor setSelectedBorderColor={setSelectedBorderColor}/>
-              <div className="compactPicker"><CompactPicker setSelectedBorderColor={setSelectedBorderColor}/></div>
+              <BorderColor setSelectedBorderColor={setSelectedBorderColor} selectedBorderColor={selectedBorderColor}/>
+              <div className="compactPicker"><CompactPicker setSelectedBorderColor={setSelectedBorderColor} selectedBorderColor={selectedBorderColor}/></div>
             </div>
             <div className="component-width">
               <label>Border Width</label>

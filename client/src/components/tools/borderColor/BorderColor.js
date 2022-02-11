@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { HuePicker } from "react-color";
 import rgbHex from "rgb-hex";
 
-function BorderColor({setSelectedBorderColor}) {
+function BorderColor({setSelectedBorderColor, selectedBorderColor}) {
 
-  const [borderColorHex, setborderColorHex] = useState("#FFFFFF");
+  const [borderColorHex, setborderColorHex] = useState(selectedBorderColor);
   const [borderColorRgb, setborderColorRgb] = useState({});
 
 

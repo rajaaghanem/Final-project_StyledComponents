@@ -3,8 +3,8 @@ import {CompactPicker} from 'react-color';
 import rgbHex from 'rgb-hex';
 import "./compactPicker.css";
 
-function CompactColorBorder({setSelectedBorderColor}) {
-  const [borderColorHex, setborderColorHex] = useState("#FFFFFF");
+function CompactColorBorder({setSelectedBorderColor, selectedBorderColor}) {
+  const [borderColorHex, setborderColorHex] = useState(selectedBorderColor);
   const [borderColorRgb, setborderColorRgb] = useState({});
 
 
