@@ -1,33 +1,31 @@
 import React, { useState } from "react";
 import EditorPage from "../../../components/editorpage/EditorPage";
 import Tools from "../../../components/tools/Tools";
-import NormalCard from "../../../components/cards/normalCard/NormalCard";
-import "./normalCard.css";
+import Button from "../../../components/buttons/buttonForGenerate/Button";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import "./normalButtonPage.css";
 
-function NormalCardPage() {
+function NormalButtonPage() {
   const [selectedColor, setSelectedColor] = useState("#AC617C");
   const [componentSize, setComponentSize] = useState({
     componentWidth: "130px",
-    componentHeight: "190px",
-    componentPadding: "0px",
-    componentMargin: "0px",
+    componentHeight: "70px",
+    componentPadding: "20px",
+    componentMargin: "20px",
   });
-  const [selectedBorderColor, setSelectedBorderColor] = useState("#FFFFFF");
+  const [selectedBorderColor, setSelectedBorderColor] = useState("#0C797D");
   const [selectedBoreder, setSelectedBoreder] = useState({
     borderWidth: "3px",
     borederStyle: "none",
-    borderRadius: "15px",
+    borderRadius: "4px",
   });
   const [boxShadow, setBoxShadow] = useState({
-    hOffSet: "1px",
-    vOffSet: "1px",
-    blur: "3px",
+    hOffSet: "4px",
+    vOffSet: "4px",
+    blur: "8px",
   });
   const [selectedShadowColor, setSelectedShadowColor] = useState("gray");
-  const [inner, setInner] = useState(false);
-  const [selectedColorInner, setSelectedColorInner] = useState("#ECD4D7");
   const [isContinue, setisContinue] = useState(false);
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -42,19 +40,9 @@ function NormalCardPage() {
     history.push("/home-page");
   };
 
-  //switch inner to true (switch to inner div)
-  const handleInner = () => {
-    setInner(true);
-  };
-
-  //switch inner to false (switch to outer div)
-  const handleOuter = () => {
-    setInner(false);
-  };
-
   return (
     <div>
-      <div>
+      <div className="">
         <div className="tools-page-container">
           {!currentUser && (
             <div className={`login-message ${isContinue && "disply-none"}`}>
@@ -69,38 +57,31 @@ function NormalCardPage() {
               </div>
             </div>
           )}
-          <div className="innet-outer_container">
-            <button onClick={handleInner}>Inner</button>
-            <button onClick={handleOuter}>Outer</button>
-            <Tools
-              selectedColor={selectedColor}
-              setSelectedColor={setSelectedColor}
-              componentSize={componentSize}
-              setComponentSize={setComponentSize}
-              componentWidth={componentSize.componentWidth}
-              componentHeight={componentSize.componentHeight}
-              selectedBorderColor={selectedBorderColor}
-              setSelectedBorderColor={setSelectedBorderColor}
-              selectedBoreder={selectedBoreder}
-              setSelectedBoreder={setSelectedBoreder}
-              boxShadow={boxShadow}
-              setBoxShadow={setBoxShadow}
-              selectedShadowColor={selectedShadowColor}
-              setSelectedShadowColor={setSelectedShadowColor}
-              setSelectedColorInner={setSelectedColorInner}
-              selectedColorInner={selectedColorInner}
-              inner={inner} //if the user coloring the inner div inner=true
-            />
-          </div>
+          <Tools
+            selectedColor={selectedColor}
+            setSelectedColor={setSelectedColor}
+            componentSize={componentSize}
+            setComponentSize={setComponentSize}
+            componentWidth={componentSize.componentWidth}
+            componentHeight={componentSize.componentHeight}
+            selectedBorderColor={selectedBorderColor}
+            setSelectedBorderColor={setSelectedBorderColor}
+            selectedBoreder={selectedBoreder}
+            setSelectedBoreder={setSelectedBoreder}
+            boxShadow={boxShadow}
+            setBoxShadow={setBoxShadow}
+            selectedShadowColor={selectedShadowColor}
+            setSelectedShadowColor={setSelectedShadowColor}
+            inner={false}
+          />
           <div className="styled-component_button">
-            <NormalCard
+            <Button
               color={selectedColor}
               componentSize={componentSize}
               borderColor={selectedBorderColor}
               border={selectedBoreder}
               boxShadow={boxShadow}
               shadowColor={selectedShadowColor}
-              selectedColorInner={selectedColorInner} //the color of the inner div
             />
           </div>
         </div>
@@ -112,9 +93,8 @@ function NormalCardPage() {
             border={selectedBoreder}
             boxShadow={boxShadow}
             shadowColor={selectedShadowColor}
-            selectedColorInner={selectedColorInner}
-            showSave={true} //display the save button
-            type={"cards"}
+            showSave={true}
+            type={"buttons"}
           />
         </div>
       </div>
@@ -122,4 +102,4 @@ function NormalCardPage() {
   );
 }
 
-export default NormalCardPage;
+export default NormalButtonPage;

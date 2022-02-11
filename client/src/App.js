@@ -13,7 +13,6 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import Navbar from "./components/navbar/Navbar";
 import HomePage from "./pages/homepage/HomePage";
 import CategoriesPage from "./pages/categoriesPage/CategoriesPage";
-import GreenButtonPage from "./pages/buttonsPages/greenButtonpage/GreenButtonPage";
 import ChooseButtonPage from "./pages/buttonsPages/chooseButtonPage/ChooseButtonPage";
 import RoundButtonPage from "./pages/buttonsPages/roundButtonPage/RoundButtonPage";
 import UserButtonsGenerate from "./pages/userButtonsGenerate/UserButtonsGenerate";
@@ -22,6 +21,7 @@ import NormalCardPage from "./pages/cardsPages/normalCardPage/NormalCardPage";
 import Offsetbutton from "./pages/buttonsPages/offsetButton/Offsetbutton";
 import DoubleButton from "./pages/buttonsPages/doubleButton/DoubleButton";
 import GrooveButton from "./pages/buttonsPages/grooveButton/GrooveButton";
+import NormalButtonPage from "./pages/buttonsPages/normalButtonpage/NormalButtonPage";
 import WelcomePage from "./pages/welxomePage/WelcomePage";
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
                 <UserProfile setUserComponent={setUserComponent}/>
               </Route>
               <Route path="/categories-page" exact component={CategoriesPage}/>
-              <Route path="/greenButton-page" exact component={GreenButtonPage}/>
+              <Route path="/normalButton-page" exact component={NormalButtonPage}/>
               <Route path="/chooseButton-page" exact component={ChooseButtonPage}/>
               <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>

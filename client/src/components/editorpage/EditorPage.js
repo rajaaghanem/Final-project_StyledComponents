@@ -134,7 +134,7 @@ function EditorPage({
   return (
     <>
       {error && <div>{error}</div>}
-      {showSave && !showSavedMassege && (
+      {currentUser && showSave && !showSavedMassege && (
         <div className="editor-save_btn">
           <label>Give your component a name: </label>
           <input
