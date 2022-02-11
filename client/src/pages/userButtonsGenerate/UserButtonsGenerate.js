@@ -9,11 +9,13 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function UserButtonsGenerate(props) {
   const [type, setType] = useState("");
+  const [componentName, setComponentName] = useState("");
   const [componentPropsArray, setComponentPropsArray] = useState([]);
   const [componentSize, setComponentSize] = useState({});
   const [selectedBoreder, setSelectedBoreder] = useState({});
   const [boxShadow, setBoxShadow] = useState({});
   const [selectedColorInner, setSelectedColorInner] = useState("");
+  const [isChange, setIsChange] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
   const { currentToken } = useAuth();
@@ -21,6 +23,7 @@ function UserButtonsGenerate(props) {
   //get component by id and set the state objects
   useEffect(() => {
     setType(props.userComponent.category);
+    setComponentName(props.userComponent.name);
     setComponentPropsArray(props.userComponent.propsArr);
     //creating the componentSize object
     setComponentSize({
@@ -53,13 +56,45 @@ function UserButtonsGenerate(props) {
         `/savedcomponents/${id}`
       );
 
-      console.log("update component by id: ", response);
       history.push("/user-profile");
-
     } catch (e) {
-
       setError(e.response.data.message);
-      
+    }
+  };
+
+  //set the new name component by the user input
+  const handleChangeName = () => {
+    setIsChange(true);
+  };
+
+  //control the user input of change the component name
+  const handleInputName = (e) => {
+    setComponentName(e.target.value);
+  };
+
+  //reset the prev name of the component 
+  const handleCancelChangeName = () => {
+    setIsChange(false);
+    setComponentName(props.userComponent.name);
+  };
+
+  //update component name by id
+  const handleSaveChangeName = async () => {
+    setIsChange(false);
+    const id = props.userComponent._id;
+    const obj = {
+      name: componentName,
+    };
+
+    try {
+      const response = await myApi(localStorage.getItem("token")).patch(
+        `/savedcomponents/${id}`,
+        obj
+      );
+      console.log(response);
+    } catch (e) {
+      console.table(e);
+      // setError(e.response.data.message);
     }
   };
 
@@ -67,6 +102,9 @@ function UserButtonsGenerate(props) {
     <div>
       <div>
         <div className="user-show_btn_container">
+          <div>
+            <h3>{componentName}</h3>
+          </div>
           {/*show the component depends on it's type: {buttons/cards}*/}
           {type === "buttons" && (
             <div className="user-show_btn">
@@ -95,6 +133,16 @@ function UserButtonsGenerate(props) {
         <div>
           <div className="component-delete_btn">
             <button onClick={handleDeleteComponent}>Delete component</button>
+          </div>
+          <div className="component-delete_btn">
+            <button onClick={handleChangeName}>Change component name</button>
+            {isChange && (
+              <input className="change-name_input" value={componentName} onChange={handleInputName}></input>
+            )}
+            {isChange && <button onClick={handleSaveChangeName}>Save</button>}
+            {isChange && (
+              <button onClick={handleCancelChangeName}>Cancel</button>
+            )}
           </div>
           <EditorPage
             color={componentPropsArray[0]}
