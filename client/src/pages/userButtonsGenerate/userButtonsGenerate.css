@@ -1,3 +1,7 @@
+:root {
+  --main-color: #ac617d;
+}
+
 .user-show_btn_container {
   display: flex;
   flex-direction: column;
@@ -18,12 +22,15 @@
 
 .component-delete_btn button {
   font-size: 1.4rem;
-  border: 0.2rem solid gray;
+  border: 0.2rem solid rgb(100, 13, 67);
+  background-color: lightgray;
   border-radius: 1rem;
   cursor: pointer;
+  color: rgb(100, 13, 67);
+  padding: 1rem;
 }
 
 .component-delete_btn button:hover {
-  color: #ee0d89;
-  background-color: darkgray;
+  color: rgb(100, 13, 67);
+  background-color: var(--main-color);
 }

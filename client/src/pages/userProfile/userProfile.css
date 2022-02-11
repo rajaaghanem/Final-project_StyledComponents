@@ -1,5 +1,5 @@
 :root {
-  --main-color: #ac617dbd;
+  --main-color: #ac617d;
 }
 
 .user-components_container {
@@ -24,7 +24,7 @@
   box-shadow: 0.2rem 0.2rem 1rem gray;
   text-decoration: none;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.575);
+  background-color: rgba(255, 255, 255, 0.904);
 }
 
 .user-component_card:hover {

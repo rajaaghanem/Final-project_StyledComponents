@@ -46,6 +46,6 @@
 }
 
 .editor-container button:hover {
-  background-color: rgba(19, 6, 48, 0.897);
+  background-color: rgb(100, 13, 67);
   color: white;
 }
