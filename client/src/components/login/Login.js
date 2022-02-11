@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import myApi from "../../api/API";
 import "./login.css";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login({handleClick}) {
   const [email, setEmail] = useState("");
