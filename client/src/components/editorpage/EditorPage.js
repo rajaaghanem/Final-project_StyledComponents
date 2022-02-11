@@ -51,6 +51,7 @@ function EditorPage({
     border,
     boxShadow,
     shadowColor,
+    borderColor
   ]);
 
   //if the type of the component is button, set the state elements to button component text
