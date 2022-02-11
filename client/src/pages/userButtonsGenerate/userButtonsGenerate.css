@@ -14,9 +14,9 @@
 
 .component-delete_btn {
   display: flex;
-  justify-content: center;
-  align-content: center;
   height: 4rem;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
 }
 
 .component-delete_btn button {
@@ -27,9 +27,26 @@
   cursor: pointer;
   color: rgb(100, 13, 67);
   padding: 1rem;
+  margin: 0.1rem;
 }
 
 .component-delete_btn button:hover {
   color: rgb(100, 13, 67);
   background-color: var(--main-color);
+}
+
+.user-show_btn_container h3 {
+  background-color: var(--main-color);
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.change-name_input {
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 1px solid #ac617d;
+  margin: 0rem 1rem;
 }

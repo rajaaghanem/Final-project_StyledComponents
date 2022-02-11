@@ -56,7 +56,6 @@ function Tools({
     setComponentSize(newComponentSize);
   };
 
-  console.log("selectedBoreder", selectedBoreder);
 
   return (
     <>

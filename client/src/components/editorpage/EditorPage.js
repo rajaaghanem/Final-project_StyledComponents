@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./editorpage.css";
+import { useAuth } from "../../contexts/AuthContext";
 import { myApi } from "../../api/API";
 import Editor from "../editor/Editor";
 import { Link } from "react-router-dom";
@@ -22,6 +23,7 @@ function EditorPage({
   const [componentName, setComponentName] = useState("");
   const [showSavedMassege, setShowSavedMassege] = useState(false);
   const [innerColor, setInnerColor] = useState("");
+  const { currentUser } = useAuth();
 
   let textStyled, textReact, textCss;
 
@@ -54,8 +56,10 @@ function EditorPage({
   //if the type of the component is button, set the state elements to button component text
   const addTextOfButton = () => {
     textStyled =
-      `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button`+"`"+
-      `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n\t\tmargin: ${componentSize.componentMargin};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};`+"`" +
+      `import styled from "styled-components";\nimport React from "react";\n\nfunction Button() {\n\n\tconst Button = styled.button` +
+      "`" +
+      `\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tpadding: ${componentSize.componentPadding};\n\t\tmargin: ${componentSize.componentMargin};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};` +
+      "`" +
       "\t\n\n\treturn <Button> </Button>;\n}\n\nexport default Button;";
     textReact =
       'import React from "react";\n\nfunction Button() {\n\n\treturn <button className="btn"> </button>;\n}\n\nexport default Button;';
@@ -66,12 +70,17 @@ function EditorPage({
     setCss(textCss);
   };
 
-    //if the type of the component is card, set the state elements to button component text
+  //if the type of the component is card, set the state elements to button component text
   const addTextOfCard = () => {
     textStyled =
-      `import styled from "styled-components";\nimport React from "react";\n\nfunction Card() {\n\n\tconst Card = styled.div`+"`" +
-      `\n\t\tdisplay: flex;\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};\n\t\tjustify-content: space-around;`+"`\n" +
-      `\n\tconst Content = styled.div`+"`\n"+`\t\twidth: ${componentSize.componentWidth};\n\t\theight: 50px;\n\t\tborder-radius: 15px 15px 0px 0px;\n\t\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tbackground-color:  ${selectedColorInner};`+"`" +
+      `import styled from "styled-components";\nimport React from "react";\n\nfunction Card() {\n\n\tconst Card = styled.div` +
+      "`" +
+      `\n\t\tdisplay: flex;\n\t\tbackground-color: ${color};\n\t\twidth: ${componentSize.componentWidth};\n\t\theight: ${componentSize.componentHeight};\n\t\tborder: ${border.borderWidth} ${border.borederStyle} ${borderColor};\n\t\tbox-shadow: ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tborder-radius: ${border.borderRadius};\n\t\tjustify-content: space-around;` +
+      "`\n" +
+      `\n\tconst Content = styled.div` +
+      "`\n" +
+      `\t\twidth: ${componentSize.componentWidth};\n\t\theight: 50px;\n\t\tborder-radius: 15px 15px 0px 0px;\n\t\tbox-shadow:  ${boxShadow.hOffSet} ${boxShadow.vOffSet} ${boxShadow.blur} ${shadowColor};\n\t\tbackground-color:  ${selectedColorInner};` +
+      "`" +
       "\t\n\n\treturn <Card> <Content>Title</Content> </Card>;\n}\n\nexport default Card;";
     textReact =
       'import React from "react";\n\nfunction Card() {\n\n\treturn <div className="card"> <div className="card-content"></div> </div>;\n}\n\nexport default Card;';

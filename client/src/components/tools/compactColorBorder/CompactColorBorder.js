@@ -16,7 +16,6 @@ function CompactColorBorder({setSelectedBorderColor}) {
 
   //changing the selecedColor in Tools
   useEffect(() => {
-    console.log("border", borderColorHex);
     setSelectedBorderColor(borderColorHex);
   }, [borderColorHex, setSelectedBorderColor]);
 

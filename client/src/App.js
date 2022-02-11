@@ -19,6 +19,9 @@ import RoundButtonPage from "./pages/buttonsPages/roundButtonPage/RoundButtonPag
 import UserButtonsGenerate from "./pages/userButtonsGenerate/UserButtonsGenerate";
 import ChooseCardPage from "./pages/cardsPages/chooseCardPage/ChooseCardPage";
 import NormalCardPage from "./pages/cardsPages/normalCardPage/NormalCardPage";
+import Offsetbutton from "./pages/buttonsPages/offsetButton/Offsetbutton";
+import DoubleButton from "./pages/buttonsPages/doubleButton/DoubleButton";
+import GrooveButton from "./pages/buttonsPages/grooveButton/GrooveButton";
 import WelcomePage from "./pages/welxomePage/WelcomePage";
 
 function App() {
@@ -31,7 +34,8 @@ function App() {
           <div>
             <Navbar/>
             <Switch>
-              <Route path="/" exact component={HomePage}/>
+              <Route path="/" exact component={WelcomePage}/>
+              <Route path="/home-page" exact component={HomePage}/>   
               <Route path="/editor-page" exact component={EditorPage} />
               <Route path="/axios-page" exact component={Testaxios} />
               <Route path="/signup-page" exact component={Signup} />
@@ -47,8 +51,10 @@ function App() {
               <Route path="/chooseButton-page" exact component={ChooseButtonPage}/>
               <Route path="/chooseCard-page" exact component={ChooseCardPage}/>
               <Route path="/roundButton-page" exact component={RoundButtonPage}/>
-              <Route path="/normalCard-page" exact component={NormalCardPage}/>
-              <Route path="/welcome-page" exact component={WelcomePage}/>              
+              <Route path="/offsetButton-page" exact component={Offsetbutton}/>
+              <Route path="/doubleButton-page" exact component={DoubleButton}/>
+              <Route path="/grooveButton-page" exact component={GrooveButton}/>
+              <Route path="/normalCard-page" exact component={NormalCardPage}/>           
               <Route path="/userButtonsGenerate-page" exact>
                 <UserButtonsGenerate userComponent={userComponent}/>
               </Route>

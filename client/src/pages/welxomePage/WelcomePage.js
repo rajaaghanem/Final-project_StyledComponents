@@ -7,6 +7,8 @@ function WelcomePage() {
   const images = [
     "https://i.ibb.co/2ZzrVT4/but5.jpg",
     "https://i.ibb.co/fnk4DjB/btn1.jpg",
+    "https://i.ibb.co/kDVD7Cf/doublebtn.jpg",
+    "https://i.ibb.co/WvKVXx6/groovebtn.jpg",
     "https://i.ibb.co/3FmDVb6/round1.jpg",
     "https://i.ibb.co/yWY0Qd4/card1.jpg",
     "https://i.ibb.co/hKyWJgS/btn3.jpg",

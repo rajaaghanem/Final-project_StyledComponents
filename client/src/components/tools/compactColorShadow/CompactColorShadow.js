@@ -15,7 +15,6 @@ function CompactColorShadow({setSelectedShadowColor}) {
 
   //changing the selecedColor in Tools
   useEffect(() => {
-    console.log("border", borderColorHex);
     setSelectedShadowColor(borderColorHex);
   }, [borderColorHex, setSelectedShadowColor]);
 

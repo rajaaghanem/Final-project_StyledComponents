@@ -19,7 +19,6 @@ function ColorPicker({value, setSelectedColor, setSelectedColorInner, inner}) {
     else setSelectedColor(backgroundHex);  
   }, [backgroundHex, setSelectedColor]);
 
-  console.log(backgroundRgb);
 
   return <div>
       <SketchPicker color={backgroundRgb} onChangeComplete={handleChangeComplete}/>
