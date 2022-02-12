@@ -13,6 +13,7 @@ function WelcomePage() {
     "https://i.ibb.co/yWY0Qd4/card1.jpg",
     "https://i.ibb.co/hKyWJgS/btn3.jpg",
     "https://i.ibb.co/WNh39Zy/card3.jpg",
+    "https://i.ibb.co/q9wFqFC/greenbutton.jpg",
     "https://i.ibb.co/C04FPgD/Screenshot-2022-02-11-141622.jpg",
   ];
   
@@ -49,7 +50,7 @@ function WelcomePage() {
         <Slider {...settings}>
           {images.map((img, idx) => {
             return (
-              <div
+              <div key={idx}
                 className={idx === imageIndex ? "slide activeSlide" : "slide"}
               >
                 <img src={img} alt="img" />

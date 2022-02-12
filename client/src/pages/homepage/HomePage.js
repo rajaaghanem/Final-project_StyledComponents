@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import { Link, useHistory } from "react-router-dom";
-import { AuthProvider, useAuth } from "../../contexts/AuthContext";
+import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import Login from "../../components/login/Login";
 import Signup from "../../components/signup/Signup";
 import "./homepage.css";
@@ -8,7 +7,6 @@ import "./homepage.css";
 function HomePage() {
   const [toggle, setToggle] = useState(true);
   const { currentUser } = useAuth();
-  const history = useHistory();
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -18,10 +16,10 @@ function HomePage() {
 
   return (
     <div className="homepage-container">
-        <div className="auth-components">
-        {toggle && <Signup handleClick={handleToggle}/>}
-        {!toggle && <Login handleClick={handleToggle}/>}
-        </div>
+      <div className="auth-components">
+        {!toggle && <Signup handleClick={handleToggle} />}
+        {toggle && <Login handleClick={handleToggle} />}
+      </div>
     </div>
   );
 }
