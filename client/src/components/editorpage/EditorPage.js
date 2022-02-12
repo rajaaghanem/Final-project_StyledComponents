@@ -139,6 +139,7 @@ function EditorPage({
   return (
     <>
       {error && <div>{error}</div>}
+      {/* if there is logged-in user show the save button, if not, show the message of login first */}
       {currentUser && showSave && !showSavedMassege && (
         <div className="editor-save_btn">
           <label>Give your component a name: </label>

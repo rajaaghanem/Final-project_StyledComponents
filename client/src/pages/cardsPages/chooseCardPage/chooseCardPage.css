@@ -31,3 +31,7 @@
 .component-blue_card {
   background: url("./imgs/card1.jpg") no-repeat center center/cover;
 }
+
+.component-round_card {
+  background: url("./imgs/card2.jpg") no-repeat center center/cover;
+}

@@ -16,7 +16,7 @@ function WelcomePage() {
     "https://i.ibb.co/q9wFqFC/greenbutton.jpg",
     "https://i.ibb.co/C04FPgD/Screenshot-2022-02-11-141622.jpg",
   ];
-  
+
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -50,7 +50,8 @@ function WelcomePage() {
         <Slider {...settings}>
           {images.map((img, idx) => {
             return (
-              <div key={idx}
+              <div
+                key={idx}
                 className={idx === imageIndex ? "slide activeSlide" : "slide"}
               >
                 <img src={img} alt="img" />
@@ -62,8 +63,12 @@ function WelcomePage() {
       <div className="welcome-animation">
         <h1>Hello There, Be Creative!</h1>
         <p className="subtitle">Welcome to my website!</p>
-        <p className="subtitle-description">Here You can style your own components, <br/> create components collections, <br/> 
-        Save your components to your profile <br/> and enjoy using them later.</p>
+        <p className="subtitle-description">
+          Here You can style your own components, <br /> create components
+          collections, <br />
+          Save your components to your profile <br /> and enjoy using them
+          later.
+        </p>
       </div>
     </div>
   );

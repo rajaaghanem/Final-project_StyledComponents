@@ -8,6 +8,7 @@ function HomePage() {
   const [toggle, setToggle] = useState(true);
   const { currentUser } = useAuth();
 
+  //toggled between login and signup 
   const handleToggle = () => {
     setToggle(!toggle);
   };

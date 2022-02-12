@@ -8,7 +8,7 @@ function ChooseCardPage() {
       <Link to="/normalCard-page" className="component-blue_card">
         <div></div>
       </Link>
-      <Link to="/roundButton-page" className="component-round_card">
+      <Link to="/" className="component-round_card">
         <div></div>
       </Link>
     </div>

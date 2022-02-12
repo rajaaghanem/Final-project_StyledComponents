@@ -75,8 +75,8 @@
 
 .show-saved-message_container a {
   text-decoration: none;
-  color: rgba(206, 22, 166, 0.897);
-  border: 0.3rem solid rgba(206, 22, 166, 0.897);
+  color: #c98088;
+  border: 0.3rem solid #c98088;
   padding: 1rem;
   border-radius: 1.5rem;
   cursor: pointer;
@@ -88,6 +88,7 @@
   color: white;
   padding: 2rem;
   border-radius: 1.5rem;
+  margin: 1rem;
 }
 
 .show-saved-message_container a:hover {
