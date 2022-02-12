@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import {myApi} from "../api/API";
+import { myApi } from "../api/API";
 
 const AuthContext = React.createContext();
 
@@ -12,18 +12,19 @@ export function AuthProvider({ children }) {
   const [currentToken, setCurrentToken] = useState();
   const [error, setError] = useState("");
 
+  //convert setItem and getItem to async function
   const asyncLocalStorage = {
     setItem: function (key, value) {
-        return Promise.resolve().then(function () {
-            localStorage.setItem(key, value);
-        });
+      return Promise.resolve().then(function () {
+        localStorage.setItem(key, value);
+      });
     },
     getItem: function (key) {
-        return Promise.resolve().then(function () {
-            return localStorage.getItem(key);
-        });
-    }
-};
+      return Promise.resolve().then(function () {
+        return localStorage.getItem(key);
+      });
+    },
+  };
 
   //handle signup user and add his token from localstorage
   async function signup(password, email, name) {
@@ -38,15 +39,15 @@ export function AuthProvider({ children }) {
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      await asyncLocalStorage.setItem('token', response.data.token);
-
+      await asyncLocalStorage.setItem("token", response.data.token);
+      return response;
     } catch (e) {
-      // console.table(e);
-
+      console.table(e);
       setError(e.response.data.message.replace("User validation failed:", ""));
-      console.log(error);
     }
   }
+
+  console.log(error);
 
   //handle user login and add his token from localstorage
   async function login(email, password) {
@@ -62,38 +63,30 @@ export function AuthProvider({ children }) {
 
       setCurrentToken(response.data.token);
       setCurrentUser(response.data.user);
-      await asyncLocalStorage.setItem('token', response.data.token);
+      await asyncLocalStorage.setItem("token", response.data.token);
 
-      await asyncLocalStorage.getItem('token');
-      console.log("local token", localStorage.getItem('token'));
+      await asyncLocalStorage.getItem("token");
+      return response;
     } catch (e) {
-
       setError(e.response.data.message);
       console.log(error);
-      
     }
   }
-
-  console.log(currentToken);
 
   //handle user logout and remove his token from localstorage
   async function logout() {
     setError("");
 
     try {
-      const response = await myApi(localStorage.getItem('token')).post("/users/logout");
-
-      console.log(response);
+      const response = await myApi(localStorage.getItem("token")).post(
+        "/users/logout"
+      );
       setCurrentUser(null);
-      setCurrentToken(null)
+      setCurrentToken(null);
       localStorage.clear();
-
     } catch (e) {
-
-      setError(e.response.data.message);
-      
+      setError("Unable to log out");
     }
-
   }
 
   // //logout from all user's devices
@@ -109,29 +102,27 @@ export function AuthProvider({ children }) {
   //   } catch (e) {
 
   //     setError(e.response.data.message);
-      
+
   //   }
   // }
 
-
   //get the current user depends on token
   useEffect(() => {
-
-    setError("");
+    // setError("");
 
     const handleGetUser = async () => {
-     console.log(localStorage.token);
       try {
-        const response = await myApi(localStorage.getItem('token')).get("/users/me");
+        const response = await myApi(localStorage.getItem("token")).get(
+          "/users/me"
+        );
         setCurrentUser(response.data);
       } catch (e) {
-        setError(e.response.data.message);
+        console.log(e.response);
       }
     };
-  
+
     handleGetUser();
- 
-  }, [currentToken, setCurrentToken]);
+  }, [currentToken, setCurrentToken, error, setError]);
 
   console.log("currentUser in auth", currentUser);
 

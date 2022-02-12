@@ -5,10 +5,10 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
 function Login({handleClick}) {
+  const { login, error } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPssword] = useState("");
-  //   const [error, setError] = useState("");
-  const { login, error } = useAuth();
+  const [err, setErr] = useState(error);
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -27,14 +27,15 @@ function Login({handleClick}) {
   //handle user login
   const handleLogin = async (e) => {
     e.preventDefault();
-    await login(email, password);
-    history.push("/categories-page");
+    const res = await login(email, password);
+    if (res !== undefined) history.push("/categories-page");
+    else setErr(error);
   };
 
   return (
     <div className="login_container">
       <h2>Log in</h2>
-      {error && <h3>{error}</h3>}
+      {err && <h3>{err}</h3>}
       <form className="login-form_container" onSubmit={handleLogin}>
       <div id="email">
         <label>Enter your Email</label>

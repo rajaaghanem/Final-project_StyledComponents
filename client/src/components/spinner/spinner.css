@@ -1,0 +1,37 @@
+.spinner_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: circle-clear;
+  /* border: 0.6rem dotted rgb(187, 121, 196); */
+  border: 0.6rem dotted rgb(73, 7, 48);
+  border-left: rgb(169, 219, 221) 0.6rem dotted;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
+}
+
+.spinner_container p {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.6rem;
+  color: rgb(73, 7, 48);
+}
+
+@keyframes circle-clear {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    /* border-left: rgb(1, 245, 253) 0.2rem solid; */
+    transform: rotate(360deg);
+  }
+}

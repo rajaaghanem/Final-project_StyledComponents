@@ -1,16 +1,31 @@
-import React, { useState} from "react";
-// import axios from "axios";
-// import myApi from "../../api/API";
+import React, { useState, useEffect} from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import validator from "validator";
 import "./signup.css";
 
 function Signup({ handleClick }) {
+  const strongPassword =
+    "Password must contain at least: 8 characters, 1 lowercase, 1 uppercase, 1 number, 1 symbol.";
+  const { signup, error } = useAuth();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
-  const [password, setPssword] = useState("");
-  const { signup, error } = useAuth();
+  const [password, setPassword] = useState("");
+  const [isStrongPassword, setIsStrongPassword] = useState(strongPassword);
+  const [err, setErr] = useState(error);
   const history = useHistory();
+
+
+  // Check if the password is strong.
+  useEffect(() => {
+    if (password.length >= 8) {
+      if (validator.isStrongPassword(password)) {
+        setIsStrongPassword("");
+      } else {
+        setIsStrongPassword(strongPassword);
+      }
+    }
+  }, [password]);
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -18,7 +33,7 @@ function Signup({ handleClick }) {
         setEmail(e.target.value);
         break;
       case "password":
-        setPssword(e.target.value);
+        setPassword(e.target.value);
         break;
       case "name":
         setUserName(e.target.value);
@@ -30,14 +45,20 @@ function Signup({ handleClick }) {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    await signup(password, email, userName);
-    history.push("/categories-page");
+    try{
+     const res= await signup(password, email, userName);
+      if (res !== undefined) history.push("/categories-page");
+      else setErr(error);
+
+    }catch(e){
+      setErr(e.message);
+    }
   };
 
   return (
     <div className="login_container">
       <h2>Sign Up</h2>
-      {error && <h3>{error}</h3>}
+      {err && <h3>{err}</h3>}
       <form className="login-form_container" onSubmit={handleSignup}>
         <div id="name">
           <label>Enter your name</label>
@@ -60,6 +81,9 @@ function Signup({ handleClick }) {
             onChange={handleChange}
             value={password}
           />
+          {isStrongPassword && (
+              <p className="strong-password_p">{isStrongPassword}</p>
+            )}
         </div>
         <div className="login-form-btn">
           <button type="submit" onClick={handleSignup}>

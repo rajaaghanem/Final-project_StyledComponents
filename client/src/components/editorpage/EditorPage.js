@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { myApi } from "../../api/API";
 import Editor from "../editor/Editor";
 import { Link } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
 
 function EditorPage({
   color,
@@ -23,6 +24,7 @@ function EditorPage({
   const [componentName, setComponentName] = useState("");
   const [showSavedMassege, setShowSavedMassege] = useState(false);
   const [innerColor, setInnerColor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { currentUser } = useAuth();
 
   let textStyled, textReact, textCss;
@@ -94,6 +96,7 @@ function EditorPage({
 
   //saved the component to the user database includes props array
   const handleSaveComponent = async () => {
+    setIsLoading(true);
     const obj = {
       name: componentName,
       styledComponent: styledComponent,
@@ -126,6 +129,7 @@ function EditorPage({
         obj
       );
       console.log("component: ", response.data.styledComponent);
+      setIsLoading(false);
       setShowSavedMassege(true);
     } catch (e) {
       setError(e.response.data.message);
@@ -151,6 +155,7 @@ function EditorPage({
           </button>
         </div>
       )}
+      {isLoading && <Spinner/>}
       {showSavedMassege && (
         <div className="show-saved-message_container">
           <p>Added to your profile</p>
