@@ -12,7 +12,6 @@ function Navbar() {
     history.push("/");
   };
 
-  console.log("currentUser in navbar", currentUser);
   return (
     <div className="navbar-container">
       <Link to="/">

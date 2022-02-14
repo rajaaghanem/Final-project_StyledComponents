@@ -1,10 +1,12 @@
+:root {
+  --main-color: #ac617d;
+}
+
 .navbar-container {
   height: 6rem;
-  /* background-color: #19073aa9; */
   background-color: rgba(0, 0, 0, 0.74);
   box-shadow: 0.3rem 0.3rem 0.3rem rgb(80, 78, 78);
   color: white;
-  /* color: #598480; */
   display: flex;
   text-align: center;
   justify-content: space-between;
@@ -24,21 +26,61 @@
   padding: 0.7rem;
 }
 
-.navbar-container a:hover {
-  background-color: #707070;
-  /* color: #ee0d89; */
-  color: #d6938b;
-}
-
 .profile-btn {
   margin-right: 4rem;
-  color: #d6938b;
+  color: var(--main-color);
 }
 
 .navbar-container a {
   text-decoration: none;
-  /* color: #f5b937; */
   color: white;
   padding: 1rem;
   border-radius: 1rem;
+  position: relative;
+}
+
+.navbar-container a:hover {
+  color: var(--main-color);
+}
+
+.navbar-container a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  left: 0;
+  bottom: 0;
+  background-color: var(--main-color);
+}
+
+.navbar-container a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  right: 0;
+  top: 0;
+  background-color: var(--main-color);
+}
+
+a::after {
+  content: "";
+  transform: scale(0, 1);
+  transform-origin: 0% 100%;
+  transition: transform 0.5s ease;
+}
+
+a::before {
+  content: "";
+  transform: scale(0, 1);
+  transform-origin: 100% 0%;
+  transition: transform 0.5s ease;
+}
+
+a:hover::after {
+  transform: scale(1, 1);
+}
+
+a:hover::before {
+  transform: scale(1, 1);
 }

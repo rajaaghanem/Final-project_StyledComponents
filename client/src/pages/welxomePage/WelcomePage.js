@@ -17,6 +17,8 @@ function WelcomePage() {
     "https://i.ibb.co/C04FPgD/Screenshot-2022-02-11-141622.jpg",
   ];
 
+  
+  
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -33,6 +35,7 @@ function WelcomePage() {
     );
   };
 
+
   const settings = {
     infinate: true,
     lazyload: true,
@@ -44,6 +47,8 @@ function WelcomePage() {
     prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setImageIndex(next),
   };
+
+
   return (
     <div className="welcome-page_container">
       <div className="slider_container">

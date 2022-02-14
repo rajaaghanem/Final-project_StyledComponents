@@ -21,7 +21,6 @@
 
 .slider_container {
   width: 45%;
-  /* margin: 5rem auto; */
   padding: 5rem auto;
   height: 50vh;
   margin-left: 47vw;
@@ -75,17 +74,6 @@
   --typewriterCharacters: 24;
 }
 
-/* body {
-  margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  min-height: 100vh;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  background: var(--bg-color);
-} */
-
-/**/
 .welcome-animation {
   position: absolute;
   top: 0;

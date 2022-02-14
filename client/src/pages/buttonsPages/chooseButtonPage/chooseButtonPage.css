@@ -7,7 +7,6 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /* background-color: lightgray; */
   min-height: 100vh;
   padding-top: 7rem;
   background: url("./imgs/btn3.jpg") no-repeat center center/cover;
@@ -35,6 +34,7 @@
   align-items: center;
   border-radius: 2rem;
   box-shadow: 1rem 1rem 1rem grey;
+  border: 0.5rem solid white;
   text-decoration: none;
   color: whitesmoke;
   z-index: 2;
@@ -42,6 +42,7 @@
 
 .component-blue_btn {
   background: url("./imgs/btn1.jpg") no-repeat center center/cover;
+  object-fit: cover;
 }
 
 .component-round_btn {
@@ -58,4 +59,8 @@
 
 .component-groove_btn {
   background: url("./imgs/groovebtn.jpg") no-repeat center center/cover;
+}
+
+.component-style_cards_container a:hover {
+  border: 0.5rem solid var(--main-color);
 }
