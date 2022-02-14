@@ -1,98 +1,28 @@
-# mongodb-bank-API
-## User Object
-Property | Type| Description
-------------- | ------------- | -------------
-userId  | String  | Unique id
-passId  | String  | passport id
-cash | Number | Default 0
-credit  | Number | Default 0
+# Middle-Project_food-workshops
 
-## Create User
-Creates a new user with the given passId and returns the user object.
+A react project where I built for adding style to React components in an easy way.
+- Link : https://final-project-styled.herokuapp.com/
 
-**URL**:
-/users
+## About the project
 
-**Method**: Post
+Over 10ten days we had to create our own React app, I did it by using a couple of things:
 
-**URL Params** : none
+- APIs
+- React Router
+- Use Hooks
+- MongoDB
+- Express
+- And more!
 
-### Parameters - Request Body Parameters
-Property | Type| Description
-------------- | ------------- | -------------
-userId  | String  | Required
-cash | Number | Optional, Default 0
-credit  | Number | Optional, Default 0
+## The site :
 
-## Show All Users
-Returns json data about all users.
+### User can styled his own components and then copy the code directly to his project.
+![btn](https://user-images.githubusercontent.com/64411572/153934791-8afc8580-1267-408c-9065-ba7fb300cef7.jpg)
 
-**URL**:
-/users
+![code](https://user-images.githubusercontent.com/64411572/153935301-860642f3-66b5-49f8-bc31-a3d322bbb7d4.jpg)
 
-**Method**: Get
 
-**URL Params** : none
-
-## Deposite cash
-Deposit cash to a user account
-
-**URL**:
-/users/deposite/:id
-
-**Method**: Patch
-
-**URL Params** : userId
-
-### Parameters - Request Body Parameters
-Property | Type| Description
-------------- | ------------- | -------------
-amount | Number  | Required
-
-## Deposite credit
-Deposit credit to a user account
-
-**URL**:
-/users/credit/:id
-
-**Method**: Patch
-
-**URL Params** : userId
-
-### Parameters - Request Body Parameters
-Property | Type| Description
-------------- | ------------- | -------------
-amount | Number  | Required
-
-## Withdraw money
-Withdraw money from a user account
-
-**URL**:
-/users/withdraw/:id
-
-**Method**: Patch
-
-**URL Params** : userId
-
-### Parameters - Request Body Parameters
-Property | Type| Description
-------------- | ------------- | -------------
-amount | Number  | Required
-
-## Trensfer money
-Transfer money from one user to another
-
-**URL**:
-/users/transfer/:id
-
-**Method**: Patch
-
-**URL Params** : userId
-
-### Parameters - Request Body Parameters
-Property | Type| Description
-------------- | ------------- | -------------
-amount | Number  | Required
-id | String  | Required, the receiver id
-
+### In addition, user can save this designed components and enjoy using them later. 
+![userProfile](https://user-images.githubusercontent.com/64411572/153935949-a078eb76-6bde-4116-a4d0-e9e9ffda0520.jpg)
+![save](https://user-images.githubusercontent.com/64411572/153935960-5c9f766c-be02-480d-9ab2-f75269510271.jpg)
 
